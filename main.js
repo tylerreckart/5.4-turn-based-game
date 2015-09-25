@@ -14,6 +14,15 @@ var attack = function(maximumRoll, minimumRoll) {
   return Math.floor(Math.random() * (maximumRoll - minimumRoll + 1))  + minimumRoll;
 };
 
+// Sets current Player and Enemy for attack calculations
+var currentPlayer = {};
+var currentEnemy = {};
+
+$(document).ready(function(){
+  setTrainer(brenden);
+  setEnemy(blastoise);
+});
+
 function Trainer(name, hp, maximumRoll, minimumRoll){
   this.name = name;
   this.maxHp = hp;
@@ -64,8 +73,8 @@ Trainer.prototype.attack = function(target) {
   }
 };
 
-$('.js-attack-button').on('click', function(){
-  brenden.attack(blastoise);
+$('.js-attack').on('click', function(){
+  brenden.attack(currentEnemy);
 });
 
 Pokemon.prototype.attack = function(target) {
@@ -83,12 +92,14 @@ Pokemon.prototype.attack = function(target) {
 };
 
 var setTrainer = function(trainer){
+  currentPlayer = trainer;
   $('.js-trainer-name').text(trainer.name);
   $('.js-trainer-current-hp').text(trainer.currentHp);
   $('.js-trainer-hp').text(trainer.maxHp);
 };
 
 var setEnemy = function(enemy){
+  currentEnemy = enemy;
   $('.js-enemy-name').text(enemy.name);
   $('.js-enemy-current-hp').text(enemy.currentHp);
   $('.js-enemy-hp').text(enemy.maxHp);

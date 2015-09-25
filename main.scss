@@ -7,8 +7,13 @@ $max-width: 990px;
   @include outer-container();
 }
 
+.fighting-pokemon-container {
+  @include clearfix;
+}
+
 .trainer-container {
   @include span-columns(4);
+  @include shift(1);
   position: relative;
   height: 300px;
   border: 3px solid black;
@@ -43,12 +48,19 @@ $max-width: 990px;
   }
 }
 
-.enemy-container {
+.outer-enemy-container {
   @include span-columns(4);
-  @include shift(3);
+  @include shift(2.275);
   @include omega();
-  position: relative;
   height: 300px;
+  border: 3px solid black;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.enemy-container {
+  position: relative;
+  height: 288px;
   border: 3px solid black;
   border-radius: 3px;
 
@@ -79,4 +91,21 @@ $max-width: 990px;
       transition: all 0.3s ease-in-out;
     }
   }
+}
+
+.menu{
+  @include span-columns(10);
+  @include shift(1);
+  margin-top: 20px;
+  border: 3px solid black;
+  border-radius: 3px;
+  padding: 3px;
+  height: 200px;
+}
+
+.inner-menu-box {
+  @include fill-parent();
+  border: 3px solid black;
+  border-radius: 3px;
+  height: 188px;
 }
