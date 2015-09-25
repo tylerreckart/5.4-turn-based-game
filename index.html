@@ -1,12 +1,49 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Pokemon Chartreuse</title>
   <link rel="stylesheet" src="dist/assets/styles/main.css">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
+
+  <div class="container">
+
+    <div class="fighting-pokemenon-container">
+
+      <div class="trainer-container">
+        <div class="trainer-stats">
+          <h1 class="trainer-name js-trainer-name">Name</h1>
+          <h3 class="trainer-hp"><span class="js-trainer-current-hp">#</span>/<span class="js-trainer-hp">#</span></h3>
+          <div class="trainer-hp-bar">
+            <div class="trainer-bar js-trainer-bar">
+              <div class="hp"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="enemy-container">
+        <div class="enemy-stats">
+          <h1 class="enemy-name js-enemy-name">Name</h1>
+          <h3 class="enemy-hp"><span class="js-enemy-current-hp">#</span>/<span class="js-enemy-hp">#</span></h3>
+          <div class="enemy-hp-bar">
+            <div class="enemy-bar js-enemy-bar">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="js-attack-button">Attack!</button>
+  </div>
+
+
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="main.js"></script>
 </body>
+
 </html>

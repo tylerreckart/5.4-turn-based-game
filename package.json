@@ -1,0 +1,20 @@
+{
+  "name": "pokemon-chartreuse",
+  "version": "1.0.0",
+  "description": "Pokemon Game",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass -w *.scss -o ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylerreckart/pokemon-chartreuse.git"
+  },
+  "author": "Tyler & Pierre",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylerreckart/pokemon-chartreuse/issues"
+  },
+  "homepage": "https://github.com/tylerreckart/pokemon-chartreuse#readme"
+}
