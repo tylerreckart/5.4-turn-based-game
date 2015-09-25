@@ -45,10 +45,17 @@ var setEnemy = function(enemy) {
 };
 
 $(document).ready(function() {
-  setTrainer(trainedBlastoise);
-  setEnemy(choosePokemon());
-  currentEnemy.attack(currentPlayer);
+  $('.modal-pokemon').on('click', function(){
+    $('.start-modal').addClass('not-active');
+    var selection = _.where(trainedArray, {'name': $(this).text()});
+    currentPlayer = selection[0];
+    setTrainer(currentPlayer);
+    setEnemy(choosePokemon());
+    currentEnemy.attack(currentPlayer);
+  });
 });
+
+
 
 function Trained(name, hp, maximumRoll, minimumRoll) {
   this.name = name;
@@ -103,10 +110,9 @@ $('.js-attack').on('click', function() {
   currentPlayer.attack(currentEnemy);
 });
 
-$('.modal-pokemon').on('click', function(){
-  $('.start-modal').addClass('not-active');
-  $(this).text()
-})
+
+
+
 
 Pokemon.prototype.attack = function(target) {
   var pokemon = this;
