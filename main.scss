@@ -105,7 +105,48 @@ $max-width: 990px;
 
 .inner-menu-box {
   @include fill-parent();
+  position: relative;
   border: 3px solid black;
   border-radius: 3px;
   height: 188px;
+}
+
+.player-options {
+}
+
+.combat-text-container {
+  @include fill-parent();
+  height: 188px;
+}
+
+.combat-text {
+  white-space: nowrap;
+}
+
+.not-active {
+  height: 0;
+  overflow: hidden;
+}
+
+.start-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.modal-menu {
+  @include size(300px 400px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 3px solid black;
+  border-radius: 3px;
+
+  >* {
+    text-align: center;
+  }
 }
