@@ -1,0 +1,285 @@
+@import '../../bower_components/bourbon/app/assets/stylesheets/bourbon';
+@import '../../bower_components/neat/app/assets/stylesheets/neat';
+@include font-face("pokemon-gb", '../fonts/pokemon-gb/pokemon-gb');
+
+
+
+
+$max-width: 990px;
+$modal-background: black;
+$blastoise: blue;
+$charizard: red;
+$venusaur: green;
+$pikachu: yellow;
+
+.container {
+  @include outer-container();
+}
+
+.fighting-pokemon-container {
+  @include span-columns(8);
+  @include shift(2);
+  @include clearfix;
+  position: relative;
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
+.trainer-container {
+  @include fill-parent();
+  position: relative;
+  height: 200px;
+}
+
+.trainer-image-container{
+  @include span-columns(4 of 8);
+  height: 200px;
+}
+
+.trainer-stats{
+  @include span-columns(4 of 8);
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  height: 100px;
+
+
+  h1 {
+    font-family: "pokemon-gb";
+    position: absolute;
+    right: 5px;
+    bottom: 50px;
+    font-size: em(25px);
+  }
+
+  h3 {
+    font-family: "pokemon-gb";
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+  }
+
+  .trainer-hp-bar {
+    width: 200px;
+    position: absolute;
+    right: 5px;
+    bottom: 30px;
+    height: 20px;
+    padding: 5px;
+    background: black;
+    border-radius: 8px;
+
+    .trainer-bar {
+      width: 100%;
+      height: 10px;
+      background: red;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}
+
+.enemy-container {
+  @include fill-parent();
+  ;
+  position: relative;
+  height: 200px;
+}
+
+.enemy-stats{
+  @include span-columns(4 of 8);
+  height: 200px;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  border-left: 5px solid black;
+  border-bottom: 5px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  height: 100px;
+
+  h1 {
+    font-family: "pokemon-gb";
+    position: absolute;
+    bottom: 50px;
+    left: 5px;
+    font-size: em(25px);
+  }
+
+  h3 {
+    font-family: "pokemon-gb";
+    position: absolute;
+    bottom: 10px;
+    left: 30px;
+  }
+
+  .enemy-hp-bar {
+    width: 200px;
+    position: absolute;
+    bottom: 30px;
+    left: 5px;
+    height: 20px;
+    padding: 5px;
+    background: black;
+    border-radius: 8px;
+
+    .enemy-bar {
+      width: 100%;
+      height: 10px;
+      background: red;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}
+
+.enemy-image-container {
+  @include span-columns(4 of 8);
+  @include shift(4);
+  height: 200px;
+}
+
+.image-container {
+  position: relative;
+
+  .portrait {
+    @include size(200px 200px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+.menu{
+  @include span-columns(8);
+  @include shift(2);
+  margin-top: 20px;
+  border: 3px solid black;
+  border-radius: 3px;
+  padding: 3px;
+  height: 200px;
+}
+
+.inner-menu-box {
+  @include fill-parent();
+  position: relative;
+  border: 3px solid black;
+  border-radius: 3px;
+  height: 188px;
+  padding: 20px;
+  font-family: "pokemon-gb";
+}
+
+.player-options {
+
+  .question {
+    margin-bottom: 20px;
+  }
+
+  .player-option {
+    position: relative;
+    margin-left: 15px;
+
+    .triangle {
+      @include triangle(16px 8px, black, right);
+      position: absolute;
+      left: -15px;
+      top: -2px;
+      visibility: hidden;
+    }
+
+    &:hover .triangle {
+      visibility: visible;
+    }
+  }
+}
+
+.combat-text-container {
+  @include fill-parent();
+  height: 188px;
+}
+
+.combat-text {
+  white-space: normal;
+}
+
+.not-active {
+  height: 0;
+  overflow: hidden;
+}
+
+.start-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: $modal-background;
+}
+
+.modal-menu {
+  @include size(400px 400px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 20px;
+
+  >* {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: em(40px);
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: em(20px);
+    line-height: 30px;
+
+    span {
+      background: chartreuse;
+    }
+  }
+
+  .modal-pokemons {
+    width: 200px;
+    margin: 20px auto 0;
+    font-size: em(25px);
+    line-height: 40px;
+
+    .modal-pokemon {
+      margin: 10px;
+      border: 2px solid black;
+      border-radius: 5px;
+
+      &.blastoise:hover {
+        background: $blastoise;
+      }
+
+      &.charizard:hover {
+        background: $charizard;
+      }
+
+      &.venusaur:hover {
+        background: $venusaur;
+      }
+
+      &.pikachu:hover {
+        background: $pikachu;
+      }
+    }
+  }
+}

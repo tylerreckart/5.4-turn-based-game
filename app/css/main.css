@@ -1,0 +1,264 @@
+html {
+  box-sizing: border-box; }
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit; }
+
+@font-face {
+  font-family: "pokemon-gb";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/pokemon-gb/pokemon-gb.eot?#iefix") format("embedded-opentype"), url("../fonts/pokemon-gb/pokemon-gb.woff2") format("woff2"), url("../fonts/pokemon-gb/pokemon-gb.woff") format("woff"), url("../fonts/pokemon-gb/pokemon-gb.ttf") format("truetype"), url("../fonts/pokemon-gb/pokemon-gb.svg#pokemon-gb") format("svg"); }
+
+.container {
+  max-width: 990px;
+  margin-left: auto;
+  margin-right: auto; }
+  .container::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.fighting-pokemon-container {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 65.88078%;
+  margin-left: 17.05961%;
+  position: relative;
+  border: 3px solid black;
+  border-radius: 5px; }
+  .fighting-pokemon-container:last-child {
+    margin-right: 0; }
+  .fighting-pokemon-container::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.trainer-container {
+  width: 100%;
+  position: relative;
+  height: 200px; }
+
+.trainer-image-container {
+  float: left;
+  display: block;
+  margin-right: 3.57866%;
+  width: 48.21067%;
+  height: 200px; }
+  .trainer-image-container:last-child {
+    margin-right: 0; }
+
+.trainer-stats {
+  float: left;
+  display: block;
+  margin-right: 3.57866%;
+  width: 48.21067%;
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  height: 100px; }
+  .trainer-stats:last-child {
+    margin-right: 0; }
+  .trainer-stats h1 {
+    font-family: "pokemon-gb";
+    position: absolute;
+    right: 5px;
+    bottom: 50px;
+    font-size: 1.5625em; }
+  .trainer-stats h3 {
+    font-family: "pokemon-gb";
+    position: absolute;
+    bottom: 10px;
+    right: 30px; }
+  .trainer-stats .trainer-hp-bar {
+    width: 200px;
+    position: absolute;
+    right: 5px;
+    bottom: 30px;
+    height: 20px;
+    padding: 5px;
+    background: black;
+    border-radius: 8px; }
+    .trainer-stats .trainer-hp-bar .trainer-bar {
+      width: 100%;
+      height: 10px;
+      background: red;
+      transition: all 0.3s ease-in-out; }
+
+.enemy-container {
+  width: 100%;
+  position: relative;
+  height: 200px; }
+
+.enemy-stats {
+  float: left;
+  display: block;
+  margin-right: 3.57866%;
+  width: 48.21067%;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  border-left: 5px solid black;
+  border-bottom: 5px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  height: 100px; }
+  .enemy-stats:last-child {
+    margin-right: 0; }
+  .enemy-stats h1 {
+    font-family: "pokemon-gb";
+    position: absolute;
+    bottom: 50px;
+    left: 5px;
+    font-size: 1.5625em; }
+  .enemy-stats h3 {
+    font-family: "pokemon-gb";
+    position: absolute;
+    bottom: 10px;
+    left: 30px; }
+  .enemy-stats .enemy-hp-bar {
+    width: 200px;
+    position: absolute;
+    bottom: 30px;
+    left: 5px;
+    height: 20px;
+    padding: 5px;
+    background: black;
+    border-radius: 8px; }
+    .enemy-stats .enemy-hp-bar .enemy-bar {
+      width: 100%;
+      height: 10px;
+      background: red;
+      transition: all 0.3s ease-in-out; }
+
+.enemy-image-container {
+  float: left;
+  display: block;
+  margin-right: 3.57866%;
+  width: 48.21067%;
+  margin-left: 51.78933%;
+  height: 200px; }
+  .enemy-image-container:last-child {
+    margin-right: 0; }
+
+.image-container {
+  position: relative; }
+  .image-container .portrait {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+.menu {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 65.88078%;
+  margin-left: 17.05961%;
+  margin-top: 20px;
+  border: 3px solid black;
+  border-radius: 3px;
+  padding: 3px;
+  height: 200px; }
+  .menu:last-child {
+    margin-right: 0; }
+
+.inner-menu-box {
+  width: 100%;
+  position: relative;
+  border: 3px solid black;
+  border-radius: 3px;
+  height: 188px;
+  padding: 20px;
+  font-family: "pokemon-gb"; }
+
+.player-options .question {
+  margin-bottom: 20px; }
+
+.player-options .player-option {
+  position: relative;
+  margin-left: 15px; }
+  .player-options .player-option .triangle {
+    height: 0;
+    width: 0;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid black;
+    border-top: 8px solid transparent;
+    position: absolute;
+    left: -15px;
+    top: -2px;
+    visibility: hidden; }
+  .player-options .player-option:hover .triangle {
+    visibility: visible; }
+
+.combat-text-container {
+  width: 100%;
+  height: 188px; }
+
+.combat-text {
+  white-space: normal; }
+
+.not-active {
+  height: 0;
+  overflow: hidden; }
+
+.start-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: black; }
+
+.modal-menu {
+  height: 400px;
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 20px; }
+  .modal-menu > * {
+    text-align: center; }
+  .modal-menu h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px; }
+  .modal-menu h3 {
+    font-size: 1.25em;
+    line-height: 30px; }
+    .modal-menu h3 span {
+      background: chartreuse; }
+  .modal-menu .modal-pokemons {
+    width: 200px;
+    margin: 20px auto 0;
+    font-size: 1.5625em;
+    line-height: 40px; }
+    .modal-menu .modal-pokemons .modal-pokemon {
+      margin: 10px;
+      border: 2px solid black;
+      border-radius: 5px; }
+      .modal-menu .modal-pokemons .modal-pokemon.blastoise:hover {
+        background: blue; }
+      .modal-menu .modal-pokemons .modal-pokemon.charizard:hover {
+        background: red; }
+      .modal-menu .modal-pokemons .modal-pokemon.venusaur:hover {
+        background: green; }
+      .modal-menu .modal-pokemons .modal-pokemon.pikachu:hover {
+        background: yellow; }
