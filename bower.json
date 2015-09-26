@@ -16,6 +16,7 @@
   ],
   "devDependencies": {
     "bourbon": "~4.2.5",
-    "neat": "~1.7.2"
+    "neat": "~1.7.2",
+    "underscore": "~1.8.3"
   }
 }
