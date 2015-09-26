@@ -1,7 +1,12 @@
-@import '../bower_components/bourbon/app/assets/stylesheets/bourbon';
-@import '../bower_components/neat/app/assets/stylesheets/neat';
+@import '../../bower_components/bourbon/app/assets/stylesheets/bourbon';
+@import '../../bower_components/neat/app/assets/stylesheets/neat';
 
 $max-width: 990px;
+$modal-background: black;
+$blastoise: blue;
+$charizard: red;
+$venusaur: green;
+$pikachu: yellow;
 
 .container {
   @include outer-container();
@@ -134,19 +139,64 @@ $max-width: 990px;
   right: 0;
   bottom: 0;
   left: 0;
+  background: $modal-background;
 }
 
 .modal-menu {
-  @include size(300px 400px);
+  @include size(400px 400px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
   border: 3px solid black;
-  border-radius: 3px;
+  border-radius: 10px;
+  padding: 20px;
 
   >* {
     text-align: center;
+  }
+
+  h1 {
+    font-size: em(40px);
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: em(20px);
+    line-height: 30px;
+
+    span {
+      background: chartreuse;
+    }
+  }
+
+  .modal-pokemons {
+    width: 200px;
+    margin: 20px auto 0;
+    font-size: em(25px);
+    line-height: 40px;
+
+    .modal-pokemon {
+      margin: 10px;
+      border: 2px solid black;
+      border-radius: 5px;
+
+      &.blastoise:hover {
+        background: $blastoise;
+      }
+
+      &.charizard:hover {
+        background: $charizard;
+      }
+
+      &.venusaur:hover {
+        background: $venusaur;
+      }
+
+      &.pikachu:hover {
+        background: $pikachu;
+      }
+    }
   }
 }

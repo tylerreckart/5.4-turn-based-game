@@ -128,17 +128,44 @@ html {
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0; }
+  left: 0;
+  background: black; }
 
 .modal-menu {
   height: 400px;
-  width: 300px;
+  width: 400px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
   border: 3px solid black;
-  border-radius: 3px; }
+  border-radius: 10px;
+  padding: 20px; }
   .modal-menu > * {
     text-align: center; }
+  .modal-menu h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px; }
+  .modal-menu h3 {
+    font-size: 1.25em;
+    line-height: 30px; }
+    .modal-menu h3 span {
+      background: chartreuse; }
+  .modal-menu .modal-pokemons {
+    width: 200px;
+    margin: 20px auto 0;
+    font-size: 1.5625em;
+    line-height: 40px; }
+    .modal-menu .modal-pokemons .modal-pokemon {
+      margin: 10px;
+      border: 2px solid black;
+      border-radius: 5px; }
+      .modal-menu .modal-pokemons .modal-pokemon.blastoise:hover {
+        background: blue; }
+      .modal-menu .modal-pokemons .modal-pokemon.charizard:hover {
+        background: red; }
+      .modal-menu .modal-pokemons .modal-pokemon.venusaur:hover {
+        background: green; }
+      .modal-menu .modal-pokemons .modal-pokemon.pikachu:hover {
+        background: yellow; }
