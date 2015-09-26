@@ -1,16 +1,16 @@
 // player
-var trainedBlastoise = new Trained('Blastoise', 100, 50, 10);
-var trainedCharizard = new Trained('Charizard', 100, 50, 20);
-var trainedPikachu = new Trained('Pikachu', 100, 40, 30);
-var trainedVenusaur = new Trained('Venusaur', 120, 40, 10);
+var trainedBlastoise = new Trained('Blastoise', 100, 50, 10, 'images/characters-back/blastoise.png');
+var trainedCharizard = new Trained('Charizard', 100, 50, 20, 'images/characters-back/charizard.png');
+var trainedPikachu = new Trained('Pikachu', 100, 40, 30, 'images/characters-back/pikachu.png');
+var trainedVenusaur = new Trained('Venusaur', 120, 40, 10, 'images/characters-back/venusaur.png');
 
 // enemy
-var blastoise = new Pokemon('Blastoise', 100, 50, 10);
-var pikachu = new Pokemon('Pikachu', 100, 40, 30);
-var charizard = new Pokemon('Charizard', 100, 50, 20);
-var alakazam = new Pokemon('Alakazam', 100, 65, 10);
-var poliwhirl = new Pokemon('Poliwhirl', 100, 40, 35);
-var mewtwo = new Pokemon('Mewtwo', 100, 80, 25);
+var blastoise = new Pokemon('Blastoise', 100, 50, 10, 'images/characters-front/blastoise.png');
+var pikachu = new Pokemon('Pikachu', 100, 40, 30, 'images/characters-front/pikachu.png');
+var charizard = new Pokemon('Charizard', 100, 50, 20, 'images/characters-front/charizard.png');
+var alakazam = new Pokemon('Alakazam', 100, 65, 10, 'images/characters-front/alakazam.png');
+var poliwhirl = new Pokemon('Poliwhirl', 100, 40, 35, 'images/characters-front/poliwhirl.png');
+var mewtwo = new Pokemon('Mewtwo', 100, 80, 25,'images/characters-front/mewtwo.png');
 
 var trainedArray = [trainedBlastoise, trainedPikachu, trainedCharizard, trainedVenusaur];
 
@@ -35,6 +35,7 @@ var setTrainer = function(trainer) {
   $('.js-trainer-name').text(trainer.name);
   $('.js-trainer-current-hp').text(trainer.currentHp);
   $('.js-trainer-hp').text(trainer.maxHp);
+  $('.js-trainer-image').attr('src', trainer.picture);
 };
 
 var setEnemy = function(enemy) {
@@ -42,6 +43,7 @@ var setEnemy = function(enemy) {
   $('.js-enemy-name').text(enemy.name);
   $('.js-enemy-current-hp').text(enemy.currentHp);
   $('.js-enemy-hp').text(enemy.maxHp);
+  $('.js-enemy-image').attr('src', enemy.picture);
   $('.combat-text').text('An enemy ' + enemy.name + ' appears.');
 };
 
@@ -58,20 +60,22 @@ $(document).ready(function() {
 
 
 
-function Trained(name, hp, maximumRoll, minimumRoll) {
+function Trained(name, hp, maximumRoll, minimumRoll, picture) {
   this.name = name;
   this.maxHp = hp;
   this.currentHp = hp;
   this.maximumRoll = maximumRoll;
   this.minimumRoll = minimumRoll;
+  this.picture = picture;
 }
 
-function Pokemon(name, hp, maximumRoll, minimumRoll) {
+function Pokemon(name, hp, maximumRoll, minimumRoll, picture) {
   this.name = name;
   this.maxHp = hp;
   this.currentHp = hp;
   this.maximumRoll = maximumRoll;
   this.minimumRoll = minimumRoll;
+  this.picture = picture;
 }
 
 Trained.prototype.attack = function(target) {

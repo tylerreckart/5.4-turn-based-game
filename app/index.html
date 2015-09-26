@@ -27,11 +27,15 @@
             </div>
           </div>
         </div>
-        <div class="enemy-image"></div>
+        <div class="enemy-image-container image-container">
+          <img src="images/characters-front/blastoise.png" alt="" class="js-enemy-image portrait">
+        </div>
       </div>
 
       <div class="trainer-container">
-        <div class="trainer-image"></div>
+        <div class="trainer-image-container image-container">
+          <img src="images/characters-back/blastoise.png" alt="" class="js-trainer-image portrait">
+        </div>
         <div class="trainer-stats">
           <h1 class="trainer-name js-trainer-name">Name</h1>
           <h3 class="trainer-hp">
@@ -51,8 +55,11 @@
     <div class="menu">
       <div class="inner-menu-box">
 
-        <ul class="player options js-player-options not-active">
-          <li class="player-option js-attack ">Attack!</li>
+        <ul class="player-options js-player-options not-active">
+          <li class="question">What will you do?</li>
+          <li class="player-option js-attack ">
+            <div class="triangle"></div>
+            Attack!</li>
         </ul>
 
         <div class="js-combat-text-container combat-text-container">

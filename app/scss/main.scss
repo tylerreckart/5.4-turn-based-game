@@ -17,8 +17,8 @@ $pikachu: yellow;
 }
 
 .fighting-pokemon-container {
-  @include span-columns(10);
-  @include shift(1);
+  @include span-columns(8);
+  @include shift(2);
   @include clearfix;
   position: relative;
   border: 3px solid black;
@@ -31,13 +31,13 @@ $pikachu: yellow;
   height: 200px;
 }
 
-.trainer-image{
-  @include span-columns(6 of 10);
+.trainer-image-container{
+  @include span-columns(4 of 8);
   height: 200px;
 }
 
 .trainer-stats{
-  @include span-columns(4 of 10);
+  @include span-columns(4 of 8);
   position: absolute;
   bottom: 0;
   right: 10px;
@@ -92,7 +92,7 @@ $pikachu: yellow;
 }
 
 .enemy-stats{
-  @include span-columns(4 of 10);
+  @include span-columns(4 of 8);
   height: 200px;
   position: absolute;
   top: 0;
@@ -139,13 +139,28 @@ $pikachu: yellow;
   }
 }
 
-.enemy-image {
-  @include span-columns(6 of 10);
+.enemy-image-container {
+  @include span-columns(4 of 8);
+  @include shift(4);
   height: 200px;
 }
+
+.image-container {
+  position: relative;
+
+  .portrait {
+    @include size(200px 200px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
 .menu{
-  @include span-columns(10);
-  @include shift(1);
+  @include span-columns(8);
+  @include shift(2);
   margin-top: 20px;
   border: 3px solid black;
   border-radius: 3px;
@@ -164,6 +179,27 @@ $pikachu: yellow;
 }
 
 .player-options {
+
+  .question {
+    margin-bottom: 20px;
+  }
+
+  .player-option {
+    position: relative;
+    margin-left: 15px;
+
+    .triangle {
+      @include triangle(16px 8px, black, right);
+      position: absolute;
+      left: -15px;
+      top: -2px;
+      visibility: hidden;
+    }
+
+    &:hover .triangle {
+      visibility: visible;
+    }
+  }
 }
 
 .combat-text-container {
