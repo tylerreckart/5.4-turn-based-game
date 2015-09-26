@@ -210,7 +210,7 @@ html {
   height: 188px; }
 
 .combat-text {
-  white-space: nowrap; }
+  white-space: normal; }
 
 .not-active {
   height: 0;

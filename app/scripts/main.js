@@ -44,7 +44,7 @@ var setEnemy = function(enemy) {
   $('.js-enemy-current-hp').text(enemy.currentHp);
   $('.js-enemy-hp').text(enemy.maxHp);
   $('.js-enemy-image').attr('src', enemy.picture);
-  $('.combat-text').text('An enemy ' + enemy.name + ' appears.');
+  $('.combat-text').text('A wild ' + enemy.name + ' appears.');
 };
 
 $(document).ready(function() {
@@ -82,20 +82,22 @@ Trained.prototype.attack = function(target) {
   var trainer = this; //Setting variables for attack method
   var currentHp = target.currentHp;
   var damage = attack(this.maximumRoll, this.minimumRoll);
-  $('.combat-text').text(this.name + " attacks " + target.name); //Text for who's attacking who
+  $('.combat-text').text(this.name + " attacks the wild " + target.name); //Text for who's attacking who
 
   setTimeout(function() { // 2 sec delay until attack occurs
     currentHp = currentHp - damage;
+    if (currentHp < 0) {
+      currentHp = 0;
+    }
     target.currentHp = currentHp;
     $('.js-enemy-current-hp').text(currentHp);
     $('.js-enemy-bar').css('width', target.currentHp / target.maxHp * 100 + "%");
     $('.combat-text').text(trainer.name + " did " + damage + " damage to " + target.name);
-    console.log(this.name + " did " + damage + " damage to " + target.name);
+    console.log(this.name + " did " + damage + " damage to the wild " + target.name);
 
     if (target.currentHp <= 0) { //Added this in the attack method, else fainted statement happens after counter.
       setTimeout(function() {
-        $('.combat-text').text(target.name + " has fainted.");
-        console.log(target.name + " has fainted.");
+        $('.combat-text').text("The wild " + target.name + " has fainted.");
         setTimeout(function() {
           location.reload();
         }, 5000);
@@ -123,19 +125,21 @@ Pokemon.prototype.attack = function(target) {
   var pokemon = this;
   var currentHp = target.currentHp;
   var damage = attack(this.maximumRoll, this.minimumRoll);
-  $('.combat-text').text(pokemon.name + " attacks " + target.name);
+  $('.combat-text').text("The wild " + pokemon.name + " attacks " + target.name);
 
   setTimeout(function() { //2sec delay until attack happens
     currentHp = currentHp - damage;
+    if (currentHp < 0) {
+      currentHp = 0;
+    }
     target.currentHp = currentHp;
     $('.js-trainer-current-hp').text(currentHp);
     $('.js-trainer-bar').css('width', target.currentHp / target.maxHp * 100 + "%");
-    $('.combat-text').text(pokemon.name + " did " + damage + " damage to " + target.name);
+    $('.combat-text').text("The wild " + pokemon.name + " did " + damage + " damage to " + target.name);
 
     if (target.currentHp <= 0) {
       setTimeout(function() { //2sec delay for result
-        $('.combat-text').text('You have fainted');
-        console.log('You have fainted');
+        $('.combat-text').text(target.name + 'has fainted');
         // timeout page reload so that the player knows they have lost
         setTimeout(function() {
           location.reload();
