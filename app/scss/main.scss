@@ -26,32 +26,54 @@ $pikachu: yellow;
 }
 
 .trainer-container {
-  @include span-columns(4.5);
-  @include shift(.5);
+  @include fill-parent();
   position: relative;
-  height: 400px;
+  height: 200px;
+}
+
+.trainer-image{
+  @include span-columns(6 of 10);
+  height: 200px;
+}
+
+.trainer-stats{
+  @include span-columns(4 of 10);
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  height: 100px;
+
 
   h1 {
     font-family: "pokemon-gb";
     position: absolute;
+    right: 5px;
     bottom: 50px;
-
+    font-size: em(25px);
   }
 
   h3 {
     font-family: "pokemon-gb";
     position: absolute;
-    bottom: 50px;
-    right: 0;
+    bottom: 10px;
+    right: 30px;
   }
 
   .trainer-hp-bar {
-    @include fill-parent();
+    width: 200px;
     position: absolute;
-    bottom: 10px;
+    right: 5px;
+    bottom: 30px;
     height: 20px;
     padding: 5px;
     background: black;
+    border-radius: 8px;
 
     .trainer-bar {
       width: 100%;
@@ -63,32 +85,50 @@ $pikachu: yellow;
 }
 
 .enemy-container {
-  @include span-columns(4.5);
-  @include shift(2);
+  @include fill-parent();
+  ;
   position: relative;
-  height: 400px;
+  height: 200px;
+}
+
+.enemy-stats{
+  @include span-columns(4 of 10);
+  height: 200px;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  border-left: 5px solid black;
+  border-bottom: 5px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  height: 100px;
 
   h1 {
     font-family: "pokemon-gb";
     position: absolute;
-    top: 50px;
-
+    bottom: 50px;
+    left: 5px;
+    font-size: em(25px);
   }
 
   h3 {
     font-family: "pokemon-gb";
     position: absolute;
-    top: 50px;
-    right: 0;
+    bottom: 10px;
+    left: 30px;
   }
 
   .enemy-hp-bar {
-    @include fill-parent();
+    width: 200px;
     position: absolute;
-    top: 10px;
+    bottom: 30px;
+    left: 5px;
     height: 20px;
     padding: 5px;
     background: black;
+    border-radius: 8px;
 
     .enemy-bar {
       width: 100%;
@@ -99,6 +139,10 @@ $pikachu: yellow;
   }
 }
 
+.enemy-image {
+  @include span-columns(6 of 10);
+  height: 200px;
+}
 .menu{
   @include span-columns(10);
   @include shift(1);
