@@ -1,5 +1,9 @@
 @import '../../bower_components/bourbon/app/assets/stylesheets/bourbon';
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
+@include font-face("pokemon-gb", '../fonts/pokemon-gb/pokemon-gb');
+
+
+
 
 $max-width: 990px;
 $modal-background: black;
@@ -13,24 +17,29 @@ $pikachu: yellow;
 }
 
 .fighting-pokemon-container {
+  @include span-columns(10);
+  @include shift(1);
   @include clearfix;
+  position: relative;
+  border: 3px solid black;
+  border-radius: 5px;
 }
 
 .trainer-container {
-  @include span-columns(4);
-  @include shift(1);
+  @include span-columns(4.5);
+  @include shift(.5);
   position: relative;
-  height: 300px;
-  border: 3px solid black;
-  border-radius: 3px;
+  height: 400px;
 
   h1 {
+    font-family: "pokemon-gb";
     position: absolute;
     bottom: 50px;
 
   }
 
   h3 {
+    font-family: "pokemon-gb";
     position: absolute;
     bottom: 50px;
     right: 0;
@@ -53,38 +62,30 @@ $pikachu: yellow;
   }
 }
 
-.outer-enemy-container {
-  @include span-columns(4);
-  @include shift(2.275);
-  @include omega();
-  height: 300px;
-  border: 3px solid black;
-  border-radius: 3px;
-  padding: 3px;
-}
-
 .enemy-container {
+  @include span-columns(4.5);
+  @include shift(2);
   position: relative;
-  height: 288px;
-  border: 3px solid black;
-  border-radius: 3px;
+  height: 400px;
 
   h1 {
+    font-family: "pokemon-gb";
     position: absolute;
-    bottom: 50px;
+    top: 50px;
 
   }
 
   h3 {
+    font-family: "pokemon-gb";
     position: absolute;
-    bottom: 50px;
+    top: 50px;
     right: 0;
   }
 
   .enemy-hp-bar {
     @include fill-parent();
     position: absolute;
-    bottom: 10px;
+    top: 10px;
     height: 20px;
     padding: 5px;
     background: black;
@@ -114,6 +115,8 @@ $pikachu: yellow;
   border: 3px solid black;
   border-radius: 3px;
   height: 188px;
+  padding: 20px;
+  font-family: "pokemon-gb";
 }
 
 .player-options {

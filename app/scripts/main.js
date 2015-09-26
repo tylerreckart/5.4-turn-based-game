@@ -42,6 +42,7 @@ var setEnemy = function(enemy) {
   $('.js-enemy-name').text(enemy.name);
   $('.js-enemy-current-hp').text(enemy.currentHp);
   $('.js-enemy-hp').text(enemy.maxHp);
+  $('.combat-text').text('An enemy ' + enemy.name + ' appears.');
 };
 
 $(document).ready(function() {
@@ -51,7 +52,7 @@ $(document).ready(function() {
     currentPlayer = selection[0];
     setTrainer(currentPlayer);
     setEnemy(choosePokemon());
-    currentEnemy.attack(currentPlayer);
+    setTimeout(function() {currentEnemy.attack(currentPlayer);}, 2000);
   });
 });
 
