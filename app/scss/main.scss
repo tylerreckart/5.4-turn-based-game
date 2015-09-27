@@ -2,33 +2,60 @@
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 @include font-face("pokemon-gb", '../fonts/pokemon-gb/pokemon-gb');
 
-
-
-
-$max-width: 990px;
 $modal-background: black;
 $blastoise: blue;
 $charizard: red;
 $venusaur: green;
 $pikachu: yellow;
 
+body {
+  background-color: gray;
+}
+
 .container {
   @include outer-container();
+  background-color: white;
+  width: 550px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  margin-top: 150px;
+}
+
+.trainer-hp-bar-label {
+  font-family: "pokemon-gb";
+  position: absolute;
+  bottom: 50px;
+  margin-bottom: em(2);
+  font-size: em(11);
+  top: 38px;
+  left: 37px;
+  font-weight: bold;
+  color: black;
+}
+
+.enemy-hp-bar-label {
+  font-family: "pokemon-gb";
+  position: absolute;
+  margin-bottom: em(2);
+  font-size: em(11);
+  top: 38px;
+  font-weight: bold;
+  color: black;
 }
 
 .fighting-pokemon-container {
-  @include span-columns(8);
-  @include shift(2);
+  width: 500px;
+  margin-left: 25px;
   @include clearfix;
   position: relative;
-  border: 3px solid black;
-  border-radius: 5px;
+  top: 15px;
 }
 
 .trainer-container {
   @include fill-parent();
   position: relative;
   height: 200px;
+  top: -150px;
 }
 
 .trainer-image-container{
@@ -40,45 +67,46 @@ $pikachu: yellow;
   @include span-columns(4 of 8);
   position: absolute;
   bottom: 0;
-  right: 10px;
+  right: 0;
   margin-right: 10px;
   margin-bottom: 10px;
-  border-right: 5px solid black;
-  border-bottom: 5px solid black;
-  border-radius: 5px;
-  padding: 10px;
-  height: 100px;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  border-radius: 3px;
+  height: 80px;
 
 
   h1 {
     font-family: "pokemon-gb";
     position: absolute;
-    right: 5px;
-    bottom: 50px;
-    font-size: em(25px);
+    right: 11px;
+    bottom: 45px;
+    font-size: em(18);
   }
 
   h3 {
     font-family: "pokemon-gb";
     position: absolute;
     bottom: 10px;
-    right: 30px;
+    top: 55px;
+    right: 10px;
   }
 
   .trainer-hp-bar {
-    width: 200px;
+    width: 150px;
     position: absolute;
-    right: 5px;
+    right: 8px;
     bottom: 30px;
-    height: 20px;
-    padding: 5px;
+    height: 11px;
+    padding: 3px;
     background: black;
     border-radius: 8px;
 
     .trainer-bar {
       width: 100%;
-      height: 10px;
-      background: red;
+      height: 5px;
+      border-radius: 8px;
+      background: RGBA(90, 245, 173, 1);
       transition: all 0.3s ease-in-out;
     }
   }
@@ -86,54 +114,52 @@ $pikachu: yellow;
 
 .enemy-container {
   @include fill-parent();
-  ;
   position: relative;
   height: 200px;
 }
 
 .enemy-stats{
   @include span-columns(4 of 8);
-  height: 200px;
   position: absolute;
   top: 0;
-  left: 10px;
-  margin-left: 10px;
   margin-top: 10px;
-  border-left: 5px solid black;
-  border-bottom: 5px solid black;
-  border-radius: 5px;
+  border-left: 3px solid black;
+  border-bottom: 3px solid black;
+  border-radius: 3px;
   padding: 10px;
-  height: 100px;
+  height: 80px;
 
   h1 {
     font-family: "pokemon-gb";
     position: absolute;
-    bottom: 50px;
-    left: 5px;
-    font-size: em(25px);
+    bottom: 45px;
+    margin-bottom: em(2);
+    left: 13px;
+    font-size: em(18);
   }
 
   h3 {
     font-family: "pokemon-gb";
     position: absolute;
-    bottom: 10px;
-    left: 30px;
+    top: 56px;
+    left: 13px;
   }
 
   .enemy-hp-bar {
-    width: 200px;
+    width: 150px;
     position: absolute;
     bottom: 30px;
-    left: 5px;
-    height: 20px;
-    padding: 5px;
+    left: 44px;
+    height: 11px;
+    padding: 3px;
     background: black;
     border-radius: 8px;
 
     .enemy-bar {
       width: 100%;
-      height: 10px;
-      background: red;
+      height: 5px;
+      border-radius: 8px;
+      background: RGBA(90, 245, 173, 1);
       transition: all 0.3s ease-in-out;
     }
   }
@@ -148,20 +174,23 @@ $pikachu: yellow;
 .image-container {
   position: relative;
 
-  .portrait {
-    @include size(200px 200px);
+  .enemy-portrait {
+    width: 112px;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  }
+
+  .friendly-portrait {
+    position: absolute;
+    bottom: 5%;
   }
 }
 
 
 .menu{
-  @include span-columns(8);
-  @include shift(2);
-  margin-top: 20px;
+  width: 500px;
+  margin-left: 25px;
+  margin-top: -120px;
+  margin-bottom: 25px;
   border: 3px solid black;
   border-radius: 3px;
   padding: 3px;
@@ -169,7 +198,7 @@ $pikachu: yellow;
 }
 
 .inner-menu-box {
-  @include fill-parent();
+  width: 487px;
   position: relative;
   border: 3px solid black;
   border-radius: 3px;
@@ -178,7 +207,33 @@ $pikachu: yellow;
   font-family: "pokemon-gb";
 }
 
+.trainer-triangle {
+  position: absolute;
+  top: 71px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 6px 20px;
+  border-color: transparent transparent #000000 transparent;
+
+}
+
+.enemy-triangle {
+  position: absolute;
+  right: 0;
+  top: 71px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 0 0 20px;
+  border-color: transparent transparent transparent #000000;
+
+}
+
 .player-options {
+  position: absolute;
+  left: 10px;
 
   .question {
     margin-bottom: 20px;
@@ -187,6 +242,8 @@ $pikachu: yellow;
   .player-option {
     position: relative;
     margin-left: 15px;
+    margin-top: 10px;
+    cursor: default;
 
     .triangle {
       @include triangle(16px 8px, black, right);
@@ -203,12 +260,69 @@ $pikachu: yellow;
 }
 
 .combat-text-container {
-  @include fill-parent();
+  width: 400px;
+  position: absolute;
   height: 188px;
 }
 
 .combat-text {
   white-space: normal;
+  width: 460px;
+  line-height: 2em;
+  margin-top: -10px;
+}
+
+.switch-menu {
+  position: relative;
+  height: 188px;
+  width: 500px;
+}
+
+.switch-pokemon {
+  position: absolute;
+  width: 200px;
+  height: 85px;
+  line-height: 30px;
+  margin: 10px;
+  padding: 10px;
+  cursor: default;
+
+  &.blastoise {
+    top: -30px;
+    left: -10px;
+  }
+
+  &.charizard {
+    top: -30px;
+    right: 0;
+  }
+
+  &.venusaur {
+    bottom: 40px;
+    left: -10px;
+  }
+
+  &.pikachu {
+    bottom: 40px;
+    right: 0;
+  }
+
+  &.back {
+    bottom: -30px;
+    right: -90px;
+  }
+
+  .triangle {
+    @include triangle(16px 8px, black, right);
+    position: absolute;
+    left: -10px;
+    top: 13px;
+    visibility: hidden;
+  }
+
+  &:hover .triangle {
+    visibility: visible;
+  }
 }
 
 .not-active {

@@ -10,9 +10,7 @@
 </head>
 
 <body>
-
   <div class="container">
-
     <div class="fighting-pokemon-container">
 
       <div class="enemy-container">
@@ -22,19 +20,21 @@
             <span class="js-enemy-current-hp">#</span>/
             <span class="js-enemy-hp">#</span>
           </h3>
+          <div class="enemy-triangle"></div>
+          <h2 class="enemy-hp-bar-label">HP:</h2>
           <div class="enemy-hp-bar">
             <div class="enemy-bar js-enemy-bar">
             </div>
           </div>
         </div>
         <div class="enemy-image-container image-container">
-          <img src="images/characters-front/blastoise.png" alt="" class="js-enemy-image portrait">
+          <img src="images/characters-front/blastoise.png" alt="" class="js-enemy-image enemy-portrait">
         </div>
       </div>
 
       <div class="trainer-container">
         <div class="trainer-image-container image-container">
-          <img src="images/characters-back/blastoise.png" alt="" class="js-trainer-image portrait">
+          <img src="images/characters-back/blastoise.png" alt="" class="js-trainer-image friendly-portrait">
         </div>
         <div class="trainer-stats">
           <h1 class="trainer-name js-trainer-name">Name</h1>
@@ -42,6 +42,8 @@
             <span class="js-trainer-current-hp">#</span>&#47;
             <span class="js-trainer-hp">#</span>
           </h3>
+          <div class="trainer-triangle"></div>
+          <h2 class="trainer-hp-bar-label">HP:</h2>
           <div class="trainer-hp-bar">
             <div class="trainer-bar js-trainer-bar">
               <div class="hp"></div>
@@ -59,11 +61,43 @@
           <li class="question">What will you do?</li>
           <li class="player-option js-attack ">
             <div class="triangle"></div>
-            Attack!</li>
+            Attack</li>
+          <li class="player-option js-potion ">
+            <div class="triangle"></div>
+            Potion</li>
+          <li class="player-option js-switch">
+            <div class="triangle"></div>
+            Switch Pokemon</li>
         </ul>
 
         <div class="js-combat-text-container combat-text-container">
           <p class="combat-text"></p>
+        </div>
+
+        <div class="switch-menu js-switch-menu not-active">
+          <ul class="switch-pokemons">
+            <li class="switch-pokemon js-switch-pokemon blastoise">
+              <h3>Blastoise</h3>
+              <div class="triangle"></div>
+              <p><span class="blastoise-current-hp">#</span>/<span class="blastoise-max-hp">#</span></p>
+            </li>
+            <li class="switch-pokemon js-switch-pokemon charizard">
+              <h3>Charizard</h3>
+              <div class="triangle"></div>
+              <p><span class="charizard-current-hp">#</span>/<span class="charizard-max-hp">#</span></p>
+            </li>
+            <li class="switch-pokemon js-switch-pokemon venusaur">
+              <h3>Venusaur</h3>
+              <div class="triangle"></div>
+              <p><span class="venusaur-current-hp">#</span>/<span class="venusaur-max-hp">#</span></p>
+            </li>
+            <li class="switch-pokemon js-switch-pokemon pikachu">
+              <h3>Pikachu</h3>
+              <div class="triangle"></div>
+              <p><span class="pikachu-current-hp">#</span>/<span class="pikachu-max-hp">#</span></p>
+            </li>
+            <li class="switch-pokemon js-back back">Back</li>
+          </ul>
         </div>
 
       </div>
@@ -72,6 +106,7 @@
   </div>
 
   <div class="start-modal">
+    <audio class="background-music" src="audio/opening.mp3" type="audio/mpeg" autoplay loop></audio>
     <div class="modal-menu">
       <h1 class="modal-title">Pokemon Chartreuse</h1>
       <h3 class="modal-text">Welcome to Pokemon
@@ -89,6 +124,7 @@
 
   <script src="../bower_components/underscore/underscore.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
   <script src="scripts/main.js"></script>
 </body>
 
