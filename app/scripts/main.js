@@ -271,6 +271,10 @@ $('.js-switch-pokemon.pikachu').on('click', function() {
   }, 2000);
 });
 
+$('.js-back').on('click', function(){
+  $('.js-player-options, .js-switch-menu').toggleClass('not-active');  
+});
+
 
 
 Pokemon.prototype.attack = function(target) {
