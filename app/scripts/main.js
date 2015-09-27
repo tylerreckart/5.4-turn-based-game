@@ -96,13 +96,13 @@ Trained.prototype.potion = function(target) {
   $('.combat-text').text('You used a potion on ' + trained.name);
 
   setTimeout(function() {
-    var currentHp = target.currentHp + 40;  //Changed it to 40 to make it a little more balanced, might change it back
-    trained.currentHp = currentHp;          //if I get to putting more pokemon in 
+    var currentHp = target.currentHp + 40; //Changed it to 40 to make it a little more balanced, might change it back
+    trained.currentHp = currentHp; //if I get to putting more pokemon in
     $('.js-trainer-current-hp').text(currentHp);
     $('.js-trainer-bar').css('width', target.currentHp / target.maxHp * 100 + "%");
-    $('.combat-text').text(trained.name + ' gained 20 HP!');
+    $('.combat-text').text(trained.name + ' gained 40 HP!');
 
-    setTimeout(function(){
+    setTimeout(function() {
       currentEnemy.attack(currentPlayer);
     }, 2000);
   }, 2000);
@@ -113,32 +113,70 @@ Trained.prototype.attack = function(target) {
   var currentHp = target.currentHp;
   var damage = attack(this.maximumRoll, this.minimumRoll);
   $('.combat-text').text(this.name + " attacks the wild " + target.name); //Text for who's attacking who
+  var attackRoll = roll100();
 
-  setTimeout(function() { // 2 sec delay until attack occurs
-    currentHp = currentHp - damage;
-    if (currentHp < 0) {
-      currentHp = 0;
-    }
-    target.currentHp = currentHp;
-    $('.js-enemy-current-hp').text(currentHp);
-    $('.js-enemy-bar').css('width', target.currentHp / target.maxHp * 100 + "%");
-    $('.combat-text').text(trainer.name + " did " + damage + " damage to " + target.name);
-
-    if (target.currentHp <= 0) { //Added this in the attack method, else fainted statement happens after counter.
+  if (attackRoll < 6) {
+    setTimeout(function() {
+      $('.combat-text').text(trainer.name + " missed!");
       setTimeout(function() {
-        $('.combat-text').text("The wild " + target.name + " has fainted.");
-        setTimeout(function() {
-          location.reload();
-        }, 5000);
+        currentEnemy.attack(currentPlayer);
       }, 2000);
-    } else {
+    }, 2000);
+  } else if (attackRoll > 95) {
+    setTimeout(function() {
+      damage = damage * 2;
+      currentHp = currentHp - damage;
+      if (currentHp < 0) {
+        currentHp = 0;
+      }
+      target.currentHp = currentHp;
+      $('.js-enemy-current-hp').text(currentHp);
+      $('.js-enemy-bar').css('width', target.currentHp / target.maxHp * 100 + "%");
+      $('.combat-text').text(trainer.name + " did " + damage + " damage to " + target.name + ". A critical hit!");
 
-      // counter attack delay
-      setTimeout(function() { //2 sec delay until counter attack happens
-        target.attack(trainer);
-      }, 2000);
-    }
-  }, 2000);
+      if (target.currentHp <= 0) { //Added this in the attack method, else fainted statement happens after counter.
+        setTimeout(function() {
+          $('.combat-text').text("The wild " + target.name + " has fainted.");
+          setTimeout(function() {
+            location.reload();
+          }, 5000);
+        }, 2000);
+      } else {
+
+        // counter attack delay
+        setTimeout(function() { //2 sec delay until counter attack happens
+          target.attack(trainer);
+        }, 2000);
+      }
+    }, 2000);
+  } else {
+
+    setTimeout(function() { // 2 sec delay until attack occurs
+      currentHp = currentHp - damage;
+      if (currentHp < 0) {
+        currentHp = 0;
+      }
+      target.currentHp = currentHp;
+      $('.js-enemy-current-hp').text(currentHp);
+      $('.js-enemy-bar').css('width', target.currentHp / target.maxHp * 100 + "%");
+      $('.combat-text').text(trainer.name + " did " + damage + " damage to " + target.name);
+
+      if (target.currentHp <= 0) { //Added this in the attack method, else fainted statement happens after counter.
+        setTimeout(function() {
+          $('.combat-text').text("The wild " + target.name + " has fainted.");
+          setTimeout(function() {
+            location.reload();
+          }, 5000);
+        }, 2000);
+      } else {
+
+        // counter attack delay
+        setTimeout(function() { //2 sec delay until counter attack happens
+          target.attack(trainer);
+        }, 2000);
+      }
+    }, 2000);
+  }
 };
 
 $('.js-attack').on('click', function() {
@@ -185,4 +223,9 @@ Pokemon.prototype.attack = function(target) {
       }, 2000);
     }
   }, 2000);
+};
+
+var roll100 = function() {
+  var result = Math.ceil(Math.random() * 100);
+  return result;
 };
