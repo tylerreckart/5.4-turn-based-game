@@ -17,18 +17,18 @@ $pikachu: yellow;
 }
 
 .fighting-pokemon-container {
-  @include span-columns(8);
-  @include shift(2);
+  @include span-columns(6);
+  @include shift(3);
   @include clearfix;
   position: relative;
-  border: 3px solid black;
-  border-radius: 5px;
+  top: 20px;
 }
 
 .trainer-container {
   @include fill-parent();
   position: relative;
   height: 200px;
+  top: -50px;
 }
 
 .trainer-image-container{
@@ -40,12 +40,12 @@ $pikachu: yellow;
   @include span-columns(4 of 8);
   position: absolute;
   bottom: 0;
-  right: 10px;
+  right: 0;
   margin-right: 10px;
   margin-bottom: 10px;
-  border-right: 5px solid black;
-  border-bottom: 5px solid black;
-  border-radius: 5px;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  border-radius: 3px;
   padding: 10px;
   height: 100px;
 
@@ -53,32 +53,33 @@ $pikachu: yellow;
   h1 {
     font-family: "pokemon-gb";
     position: absolute;
-    right: 5px;
+    right: 11px;
     bottom: 50px;
-    font-size: em(25px);
+    font-size: em(18);
   }
 
   h3 {
     font-family: "pokemon-gb";
     position: absolute;
     bottom: 10px;
-    right: 30px;
+    top: 75px;
+    right: 10px;
   }
 
   .trainer-hp-bar {
     width: 200px;
     position: absolute;
-    right: 5px;
+    right: 8px;
     bottom: 30px;
-    height: 20px;
-    padding: 5px;
+    height: 16px;
+    padding: 3px;
     background: black;
-    border-radius: 8px;
+    border-radius: 3px;
 
     .trainer-bar {
       width: 100%;
       height: 10px;
-      background: red;
+      background: RGBA(90, 245, 173, 1);
       transition: all 0.3s ease-in-out;
     }
   }
@@ -93,15 +94,14 @@ $pikachu: yellow;
 
 .enemy-stats{
   @include span-columns(4 of 8);
-  height: 200px;
   position: absolute;
   top: 0;
-  left: 10px;
+  left: 0;
   margin-left: 10px;
   margin-top: 10px;
-  border-left: 5px solid black;
-  border-bottom: 5px solid black;
-  border-radius: 5px;
+  border-left: 3px solid black;
+  border-bottom: 3px solid black;
+  border-radius: 3px;
   padding: 10px;
   height: 100px;
 
@@ -109,31 +109,32 @@ $pikachu: yellow;
     font-family: "pokemon-gb";
     position: absolute;
     bottom: 50px;
-    left: 5px;
-    font-size: em(25px);
+    margin-bottom: em(2);
+    left: 13px;
+    font-size: em(18);
   }
 
   h3 {
     font-family: "pokemon-gb";
     position: absolute;
-    bottom: 10px;
-    left: 30px;
+    top: 76px;
+    left: 13px;
   }
 
   .enemy-hp-bar {
     width: 200px;
     position: absolute;
     bottom: 30px;
-    left: 5px;
-    height: 20px;
-    padding: 5px;
+    left: 8px;
+    height: 16px;
+    padding: 3px;
     background: black;
-    border-radius: 8px;
+    border-radius: 3px;
 
     .enemy-bar {
       width: 100%;
       height: 10px;
-      background: red;
+      background: RGBA(90, 245, 173, 1);
       transition: all 0.3s ease-in-out;
     }
   }
@@ -148,20 +149,26 @@ $pikachu: yellow;
 .image-container {
   position: relative;
 
-  .portrait {
-    @include size(200px 200px);
+  .enemy-portrait {
+    width: 112px;
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .friendly-portrait {
+    position: absolute;
+    bottom: 5%;
+    margin-left: 60px;
   }
 }
 
 
 .menu{
-  @include span-columns(8);
-  @include shift(2);
-  margin-top: 20px;
+  @include span-columns(6);
+  @include shift(3);
+  margin-top: -20px;
   border: 3px solid black;
   border-radius: 3px;
   padding: 3px;

@@ -58,8 +58,6 @@ $(document).ready(function() {
   });
 });
 
-
-
 function Trained(name, hp, maximumRoll, minimumRoll, picture) {
   this.name = name;
   this.maxHp = hp;
@@ -112,6 +110,10 @@ Trained.prototype.attack = function(target) {
   }, 2000);
 };
 
+Trained.prototype.potion = function(target){
+  return this.currentHp + 20;
+};
+
 $('.js-attack').on('click', function() {
   $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
   currentPlayer.attack(currentEnemy);
@@ -139,7 +141,7 @@ Pokemon.prototype.attack = function(target) {
 
     if (target.currentHp <= 0) {
       setTimeout(function() { //2sec delay for result
-        $('.combat-text').text(target.name + 'has fainted');
+        $('.combat-text').text(target.name + ' has fainted');
         // timeout page reload so that the player knows they have lost
         setTimeout(function() {
           location.reload();

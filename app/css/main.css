@@ -25,11 +25,10 @@ html {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 65.88078%;
-  margin-left: 17.05961%;
+  width: 48.82117%;
+  margin-left: 25.58941%;
   position: relative;
-  border: 3px solid black;
-  border-radius: 5px; }
+  top: 20px; }
   .fighting-pokemon-container:last-child {
     margin-right: 0; }
   .fighting-pokemon-container::after {
@@ -40,7 +39,8 @@ html {
 .trainer-container {
   width: 100%;
   position: relative;
-  height: 200px; }
+  height: 200px;
+  top: -50px; }
 
 .trainer-image-container {
   float: left;
@@ -58,12 +58,12 @@ html {
   width: 48.21067%;
   position: absolute;
   bottom: 0;
-  right: 10px;
+  right: 0;
   margin-right: 10px;
   margin-bottom: 10px;
-  border-right: 5px solid black;
-  border-bottom: 5px solid black;
-  border-radius: 5px;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  border-radius: 3px;
   padding: 10px;
   height: 100px; }
   .trainer-stats:last-child {
@@ -71,27 +71,28 @@ html {
   .trainer-stats h1 {
     font-family: "pokemon-gb";
     position: absolute;
-    right: 5px;
+    right: 11px;
     bottom: 50px;
-    font-size: 1.5625em; }
+    font-size: 1.125em; }
   .trainer-stats h3 {
     font-family: "pokemon-gb";
     position: absolute;
     bottom: 10px;
-    right: 30px; }
+    top: 75px;
+    right: 10px; }
   .trainer-stats .trainer-hp-bar {
     width: 200px;
     position: absolute;
-    right: 5px;
+    right: 8px;
     bottom: 30px;
-    height: 20px;
-    padding: 5px;
+    height: 16px;
+    padding: 3px;
     background: black;
-    border-radius: 8px; }
+    border-radius: 3px; }
     .trainer-stats .trainer-hp-bar .trainer-bar {
       width: 100%;
       height: 10px;
-      background: red;
+      background: RGBA(90, 245, 173, 1);
       transition: all 0.3s ease-in-out; }
 
 .enemy-container {
@@ -104,15 +105,14 @@ html {
   display: block;
   margin-right: 3.57866%;
   width: 48.21067%;
-  height: 200px;
   position: absolute;
   top: 0;
-  left: 10px;
+  left: 0;
   margin-left: 10px;
   margin-top: 10px;
-  border-left: 5px solid black;
-  border-bottom: 5px solid black;
-  border-radius: 5px;
+  border-left: 3px solid black;
+  border-bottom: 3px solid black;
+  border-radius: 3px;
   padding: 10px;
   height: 100px; }
   .enemy-stats:last-child {
@@ -121,26 +121,27 @@ html {
     font-family: "pokemon-gb";
     position: absolute;
     bottom: 50px;
-    left: 5px;
-    font-size: 1.5625em; }
+    margin-bottom: 0.125em;
+    left: 13px;
+    font-size: 1.125em; }
   .enemy-stats h3 {
     font-family: "pokemon-gb";
     position: absolute;
-    bottom: 10px;
-    left: 30px; }
+    top: 76px;
+    left: 13px; }
   .enemy-stats .enemy-hp-bar {
     width: 200px;
     position: absolute;
     bottom: 30px;
-    left: 5px;
-    height: 20px;
-    padding: 5px;
+    left: 8px;
+    height: 16px;
+    padding: 3px;
     background: black;
-    border-radius: 8px; }
+    border-radius: 3px; }
     .enemy-stats .enemy-hp-bar .enemy-bar {
       width: 100%;
       height: 10px;
-      background: red;
+      background: RGBA(90, 245, 173, 1);
       transition: all 0.3s ease-in-out; }
 
 .enemy-image-container {
@@ -155,21 +156,24 @@ html {
 
 .image-container {
   position: relative; }
-  .image-container .portrait {
-    height: 200px;
-    width: 200px;
+  .image-container .enemy-portrait {
+    width: 112px;
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%); }
+  .image-container .friendly-portrait {
+    position: absolute;
+    bottom: 5%;
+    margin-left: 60px; }
 
 .menu {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 65.88078%;
-  margin-left: 17.05961%;
-  margin-top: 20px;
+  width: 48.82117%;
+  margin-left: 25.58941%;
+  margin-top: -20px;
   border: 3px solid black;
   border-radius: 3px;
   padding: 3px;
