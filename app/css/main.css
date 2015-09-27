@@ -179,14 +179,10 @@ body {
   position: relative; }
   .image-container .enemy-portrait {
     width: 112px;
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%); }
+    position: absolute; }
   .image-container .friendly-portrait {
     position: absolute;
-    bottom: 5%;
-    margin-left: 60px; }
+    bottom: 5%; }
 
 .menu {
   width: 500px;
@@ -199,7 +195,7 @@ body {
   height: 200px; }
 
 .inner-menu-box {
-  width: 100%;
+  width: 487px;
   position: relative;
   border: 3px solid black;
   border-radius: 3px;
@@ -247,11 +243,15 @@ body {
     visibility: visible; }
 
 .combat-text-container {
-  width: 100%;
+  width: 400px;
+  position: absolute;
   height: 188px; }
 
 .combat-text {
-  white-space: normal; }
+  white-space: normal;
+  width: 460px;
+  line-height: 2em;
+  margin-top: -10px; }
 
 .not-active {
   height: 0;

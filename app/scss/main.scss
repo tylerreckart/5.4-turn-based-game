@@ -176,15 +176,11 @@ body {
   .enemy-portrait {
     width: 112px;
     position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 
   .friendly-portrait {
     position: absolute;
     bottom: 5%;
-    margin-left: 60px;
   }
 }
 
@@ -201,7 +197,7 @@ body {
 }
 
 .inner-menu-box {
-  @include fill-parent();
+  width: 487px;
   position: relative;
   border: 3px solid black;
   border-radius: 3px;
@@ -259,12 +255,16 @@ body {
 }
 
 .combat-text-container {
-  @include fill-parent();
+  width: 400px;
+  position: absolute;
   height: 188px;
 }
 
 .combat-text {
   white-space: normal;
+  width: 460px;
+  line-height: 2em;
+  margin-top: -10px;
 }
 
 .not-active {

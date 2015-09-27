@@ -35,7 +35,9 @@ var setTrainer = function(trainer) {
   $('.js-trainer-name').text(trainer.name);
   $('.js-trainer-current-hp').text(trainer.currentHp);
   $('.js-trainer-hp').text(trainer.maxHp);
-  $('.js-trainer-image').attr('src', trainer.picture);
+  $('.js-trainer-image')
+    .attr('src', trainer.picture)
+    .animate({'left' : '60px', 'display' : 'block'}, 1000);
 };
 
 var setEnemy = function(enemy) {
@@ -43,7 +45,9 @@ var setEnemy = function(enemy) {
   $('.js-enemy-name').text(enemy.name);
   $('.js-enemy-current-hp').text(enemy.currentHp);
   $('.js-enemy-hp').text(enemy.maxHp);
-  $('.js-enemy-image').attr('src', enemy.picture);
+  $('.js-enemy-image')
+    .attr('src', enemy.picture)
+    .animate({'right' : '60px', 'display' : 'block'}, 1000);
   $('.combat-text').text('A wild ' + enemy.name + ' appears.');
 };
 
@@ -77,6 +81,11 @@ function Pokemon(name, hp, maximumRoll, minimumRoll, picture) {
   this.picture = picture;
 }
 
+Trained.prototype.potion = function(target) {
+  var trained = this;
+  var currentHp = target.currentHp + 20;
+}
+
 Trained.prototype.attack = function(target) {
   var trainer = this; //Setting variables for attack method
   var currentHp = target.currentHp;
@@ -92,7 +101,6 @@ Trained.prototype.attack = function(target) {
     $('.js-enemy-current-hp').text(currentHp);
     $('.js-enemy-bar').css('width', target.currentHp / target.maxHp * 100 + "%");
     $('.combat-text').text(trainer.name + " did " + damage + " damage to " + target.name);
-    console.log(this.name + " did " + damage + " damage to the wild " + target.name);
 
     if (target.currentHp <= 0) { //Added this in the attack method, else fainted statement happens after counter.
       setTimeout(function() {
@@ -111,13 +119,14 @@ Trained.prototype.attack = function(target) {
   }, 2000);
 };
 
-Trained.prototype.potion = function(target){
-  return this.currentHp + 20;
-};
-
 $('.js-attack').on('click', function() {
   $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
   currentPlayer.attack(currentEnemy);
+});
+
+$('.js-potion').on('click', function(){
+  $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
+  currentPlayer.potion(currentPlayer);
 });
 
 
