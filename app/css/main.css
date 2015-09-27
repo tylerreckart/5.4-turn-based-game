@@ -12,25 +12,47 @@ html {
   font-weight: normal;
   src: url("../fonts/pokemon-gb/pokemon-gb.eot?#iefix") format("embedded-opentype"), url("../fonts/pokemon-gb/pokemon-gb.woff2") format("woff2"), url("../fonts/pokemon-gb/pokemon-gb.woff") format("woff"), url("../fonts/pokemon-gb/pokemon-gb.ttf") format("truetype"), url("../fonts/pokemon-gb/pokemon-gb.svg#pokemon-gb") format("svg"); }
 
+body {
+  background-color: gray; }
+
 .container {
-  max-width: 990px;
+  max-width: 68em;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  background-color: white;
+  width: 550px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px; }
   .container::after {
     clear: both;
     content: "";
     display: table; }
 
+.trainer-hp-bar-label {
+  font-family: "pokemon-gb";
+  position: absolute;
+  bottom: 50px;
+  margin-bottom: 0.125em;
+  font-size: 0.6875em;
+  top: 38px;
+  left: 37px;
+  font-weight: bold;
+  color: black; }
+
+.enemy-hp-bar-label {
+  font-family: "pokemon-gb";
+  position: absolute;
+  margin-bottom: 0.125em;
+  font-size: 0.6875em;
+  top: 38px;
+  font-weight: bold;
+  color: black; }
+
 .fighting-pokemon-container {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 48.82117%;
-  margin-left: 25.58941%;
+  width: 500px;
+  margin-left: 25px;
   position: relative;
-  top: 20px; }
-  .fighting-pokemon-container:last-child {
-    margin-right: 0; }
+  top: 15px; }
   .fighting-pokemon-container::after {
     clear: both;
     content: "";
@@ -40,7 +62,7 @@ html {
   width: 100%;
   position: relative;
   height: 200px;
-  top: -50px; }
+  top: -150px; }
 
 .trainer-image-container {
   float: left;
@@ -64,34 +86,34 @@ html {
   border-right: 3px solid black;
   border-bottom: 3px solid black;
   border-radius: 3px;
-  padding: 10px;
-  height: 100px; }
+  height: 80px; }
   .trainer-stats:last-child {
     margin-right: 0; }
   .trainer-stats h1 {
     font-family: "pokemon-gb";
     position: absolute;
     right: 11px;
-    bottom: 50px;
+    bottom: 45px;
     font-size: 1.125em; }
   .trainer-stats h3 {
     font-family: "pokemon-gb";
     position: absolute;
     bottom: 10px;
-    top: 75px;
+    top: 55px;
     right: 10px; }
   .trainer-stats .trainer-hp-bar {
-    width: 200px;
+    width: 150px;
     position: absolute;
     right: 8px;
     bottom: 30px;
-    height: 16px;
+    height: 11px;
     padding: 3px;
     background: black;
-    border-radius: 3px; }
+    border-radius: 8px; }
     .trainer-stats .trainer-hp-bar .trainer-bar {
       width: 100%;
-      height: 10px;
+      height: 5px;
+      border-radius: 8px;
       background: RGBA(90, 245, 173, 1);
       transition: all 0.3s ease-in-out; }
 
@@ -107,40 +129,39 @@ html {
   width: 48.21067%;
   position: absolute;
   top: 0;
-  left: 0;
-  margin-left: 10px;
   margin-top: 10px;
   border-left: 3px solid black;
   border-bottom: 3px solid black;
   border-radius: 3px;
   padding: 10px;
-  height: 100px; }
+  height: 80px; }
   .enemy-stats:last-child {
     margin-right: 0; }
   .enemy-stats h1 {
     font-family: "pokemon-gb";
     position: absolute;
-    bottom: 50px;
+    bottom: 45px;
     margin-bottom: 0.125em;
     left: 13px;
     font-size: 1.125em; }
   .enemy-stats h3 {
     font-family: "pokemon-gb";
     position: absolute;
-    top: 76px;
+    top: 56px;
     left: 13px; }
   .enemy-stats .enemy-hp-bar {
-    width: 200px;
+    width: 150px;
     position: absolute;
     bottom: 30px;
-    left: 8px;
-    height: 16px;
+    left: 44px;
+    height: 11px;
     padding: 3px;
     background: black;
-    border-radius: 3px; }
+    border-radius: 8px; }
     .enemy-stats .enemy-hp-bar .enemy-bar {
       width: 100%;
-      height: 10px;
+      height: 5px;
+      border-radius: 8px;
       background: RGBA(90, 245, 173, 1);
       transition: all 0.3s ease-in-out; }
 
@@ -168,18 +189,14 @@ html {
     margin-left: 60px; }
 
 .menu {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 48.82117%;
-  margin-left: 25.58941%;
-  margin-top: -20px;
+  width: 500px;
+  margin-left: 25px;
+  margin-top: -120px;
+  margin-bottom: 25px;
   border: 3px solid black;
   border-radius: 3px;
   padding: 3px;
   height: 200px; }
-  .menu:last-child {
-    margin-right: 0; }
 
 .inner-menu-box {
   width: 100%;
@@ -189,6 +206,26 @@ html {
   height: 188px;
   padding: 20px;
   font-family: "pokemon-gb"; }
+
+.trainer-triangle {
+  position: absolute;
+  top: 71px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 6px 20px;
+  border-color: transparent transparent #000000 transparent; }
+
+.enemy-triangle {
+  position: absolute;
+  right: 0;
+  top: 71px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 0 0 20px;
+  border-color: transparent transparent transparent #000000; }
 
 .player-options .question {
   margin-bottom: 20px; }

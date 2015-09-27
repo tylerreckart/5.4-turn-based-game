@@ -55,6 +55,7 @@ $(document).ready(function() {
     setTrainer(currentPlayer);
     setEnemy(choosePokemon());
     setTimeout(function() {currentEnemy.attack(currentPlayer);}, 2000);
+    document.querySelector('.background-music').src = 'audio/107-battle-vs-wild-pokemon-.mp3';
   });
 });
 
