@@ -45,7 +45,7 @@
           <div class="trainer-triangle"></div>
           <h2 class="trainer-hp-bar-label">HP:</h2>
           <div class="trainer-hp-bar">
-             <div class="trainer-bar js-trainer-bar">
+            <div class="trainer-bar js-trainer-bar">
               <div class="hp"></div>
             </div>
           </div>
@@ -61,21 +61,51 @@
           <li class="question">What will you do?</li>
           <li class="player-option js-attack ">
             <div class="triangle"></div>
-            Attack!</li>
+            Attack</li>
           <li class="player-option js-potion ">
             <div class="triangle"></div>
             Potion</li>
+          <li class="player-option js-switch">
+            <div class="triangle"></div>
+            Switch Pokemon</li>
         </ul>
 
         <div class="js-combat-text-container combat-text-container">
           <p class="combat-text"></p>
         </div>
 
+        <div class="switch-menu js-switch-menu not-active">
+          <ul class="switch-pokemons">
+            <li class="switch-pokemon js-switch-pokemon blastoise">
+              <h3>Blastoise</h3>
+              <div class="triangle"></div>
+              <p><span class="blastoise-current-hp">#</span>/<span class="blastoise-max-hp">#</span></p>
+            </li>
+            <li class="switch-pokemon js-switch-pokemon charizard">
+              <h3>Charizard</h3>
+              <div class="triangle"></div>
+              <p><span class="charizard-current-hp">#</span>/<span class="charizard-max-hp">#</span></p>
+            </li>
+            <li class="switch-pokemon js-switch-pokemon venusaur">
+              <h3>Venusaur</h3>
+              <div class="triangle"></div>
+              <p><span class="venusaur-current-hp">#</span>/<span class="venusaur-max-hp">#</span></p>
+            </li>
+            <li class="switch-pokemon js-switch-pokemon pikachu">
+              <h3>Pikachu</h3>
+              <div class="triangle"></div>
+              <p><span class="pikachu-current-hp">#</span>/<span class="pikachu-max-hp">#</span></p>
+            </li>
+            <li class="switch-pokemon back">Back</li>
+          </ul>
+        </div>
+
       </div>
     </div>
 
   </div>
-<div class="start-modal">
+
+  <div class="start-modal">
     <audio class="background-music" src="audio/opening.mp3" type="audio/mpeg" autoplay loop></audio>
     <div class="modal-menu">
       <h1 class="modal-title">Pokemon Chartreuse</h1>

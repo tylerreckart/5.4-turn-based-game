@@ -272,6 +272,59 @@ body {
   margin-top: -10px;
 }
 
+.switch-menu {
+  position: relative;
+  height: 188px;
+  width: 500px;
+}
+
+.switch-pokemon {
+  position: absolute;
+  width: 200px;
+  height: 85px;
+  line-height: 30px;
+  margin: 10px;
+  padding: 10px;
+  cursor: default;
+
+  &.blastoise {
+    top: -30px;
+    left: -10px;
+  }
+
+  &.charizard {
+    top: -30px;
+    right: 0;
+  }
+
+  &.venusaur {
+    bottom: 40px;
+    left: -10px;
+  }
+
+  &.pikachu {
+    bottom: 40px;
+    right: 0;
+  }
+
+  &.back {
+    bottom: -30px;
+    right: -90px;
+  }
+
+  .triangle {
+    @include triangle(16px 8px, black, right);
+    position: absolute;
+    left: -10px;
+    top: 13px;
+    visibility: hidden;
+  }
+
+  &:hover .triangle {
+    visibility: visible;
+  }
+}
+
 .not-active {
   height: 0;
   overflow: hidden;

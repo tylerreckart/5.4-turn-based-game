@@ -258,6 +258,47 @@ body {
   line-height: 2em;
   margin-top: -10px; }
 
+.switch-menu {
+  position: relative;
+  height: 188px;
+  width: 500px; }
+
+.switch-pokemon {
+  position: absolute;
+  width: 200px;
+  height: 85px;
+  line-height: 30px;
+  margin: 10px;
+  padding: 10px;
+  cursor: default; }
+  .switch-pokemon.blastoise {
+    top: -30px;
+    left: -10px; }
+  .switch-pokemon.charizard {
+    top: -30px;
+    right: 0; }
+  .switch-pokemon.venusaur {
+    bottom: 40px;
+    left: -10px; }
+  .switch-pokemon.pikachu {
+    bottom: 40px;
+    right: 0; }
+  .switch-pokemon.back {
+    bottom: -30px;
+    right: -90px; }
+  .switch-pokemon .triangle {
+    height: 0;
+    width: 0;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid black;
+    border-top: 8px solid transparent;
+    position: absolute;
+    left: -10px;
+    top: 13px;
+    visibility: hidden; }
+  .switch-pokemon:hover .triangle {
+    visibility: visible; }
+
 .not-active {
   height: 0;
   overflow: hidden; }

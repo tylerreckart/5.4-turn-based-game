@@ -189,7 +189,87 @@ $('.js-potion').on('click', function() {
   currentPlayer.potion(currentPlayer);
 });
 
+$('.js-switch').on('click', function() {
+  $('.js-player-options, .js-switch-menu').toggleClass('not-active');
+  _.each(trainedArray, function(el, ind){
+    var currentHp = '.' + el.name.toLowerCase() + '-current-hp';
+    var maxHp = '.' + el.name.toLowerCase() + '-max-hp';
+    $(currentHp).text(el.currentHp);
+    $(maxHp).text(el.maxHp);
+  });
+});
 
+$('.js-switch-pokemon.charizard').on('click', function() {
+  $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
+  $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
+
+  setTimeout(function(){
+    $('.combat-text').text('Go... Charizard!');
+    var selection = _.where(trainedArray, {
+      'name': 'Charizard'
+    });
+    currentPlayer = selection[0];
+    setTrainer(currentPlayer);
+
+    setTimeout(function() {
+      currentEnemy.attack(currentPlayer);
+    }, 2000);
+  }, 2000);
+});
+
+$('.js-switch-pokemon.blastoise').on('click', function() {
+  $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
+  $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
+
+  setTimeout(function(){
+    $('.combat-text').text('Go... Blastoise!');
+    var selection = _.where(trainedArray, {
+      'name': 'Blastoise'
+    });
+    currentPlayer = selection[0];
+    setTrainer(currentPlayer);
+
+    setTimeout(function() {
+      currentEnemy.attack(currentPlayer);
+    }, 2000);
+  }, 2000);
+});
+
+$('.js-switch-pokemon.venusaur').on('click', function() {
+  $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
+  $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
+
+  setTimeout(function(){
+    $('.combat-text').text('Go... Venusaur!');
+    var selection = _.where(trainedArray, {
+      'name': 'Venusaur'
+    });
+    currentPlayer = selection[0];
+    setTrainer(currentPlayer);
+
+    setTimeout(function() {
+      currentEnemy.attack(currentPlayer);
+    }, 2000);
+  }, 2000);
+});
+
+$('.js-switch-pokemon.pikachu').on('click', function() {
+  $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
+  $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
+
+  setTimeout(function(){
+    $('.combat-text').text('Go... Pikachu!');
+    var selection = _.where(trainedArray, {
+      'name': 'Pikachu'
+    });
+    currentPlayer = selection[0];
+    setTrainer(currentPlayer);
+
+    setTimeout(function() {
+      currentEnemy.attack(currentPlayer);
+    }, 2000);
+  }, 2000);
+});
 
 
 
