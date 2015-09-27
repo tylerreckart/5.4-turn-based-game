@@ -10,7 +10,7 @@ var pikachu = new Pokemon('Pikachu', 100, 40, 30, 'images/characters-front/pikac
 var charizard = new Pokemon('Charizard', 100, 50, 20, 'images/characters-front/charizard.png');
 var alakazam = new Pokemon('Alakazam', 100, 65, 10, 'images/characters-front/alakazam.png');
 var poliwhirl = new Pokemon('Poliwhirl', 100, 40, 35, 'images/characters-front/poliwhirl.png');
-var mewtwo = new Pokemon('Mewtwo', 100, 80, 25,'images/characters-front/mewtwo.png');
+var mewtwo = new Pokemon('Mewtwo', 100, 80, 25, 'images/characters-front/mewtwo.png');
 
 var trainedArray = [trainedBlastoise, trainedPikachu, trainedCharizard, trainedVenusaur];
 
@@ -22,7 +22,7 @@ var attack = function(maximumRoll, minimumRoll) {
 };
 
 var choosePokemon = function() {
-  var ind =  Math.floor(Math.random() * (pokemonArray.length));
+  var ind = Math.floor(Math.random() * (pokemonArray.length));
   return pokemonArray[ind];
 };
 
@@ -37,7 +37,10 @@ var setTrainer = function(trainer) {
   $('.js-trainer-hp').text(trainer.maxHp);
   $('.js-trainer-image')
     .attr('src', trainer.picture)
-    .animate({'left' : '60px', 'display' : 'block'}, 1000);
+    .animate({
+      'left': '60px',
+      'display': 'block'
+    }, 1000);
 };
 
 var setEnemy = function(enemy) {
@@ -47,18 +50,25 @@ var setEnemy = function(enemy) {
   $('.js-enemy-hp').text(enemy.maxHp);
   $('.js-enemy-image')
     .attr('src', enemy.picture)
-    .animate({'right' : '60px', 'display' : 'block'}, 1000);
+    .animate({
+      'right': '60px',
+      'display': 'block'
+    }, 1000);
   $('.combat-text').text('A wild ' + enemy.name + ' appears.');
 };
 
 $(document).ready(function() {
-  $('.modal-pokemon').on('click', function(){
+  $('.modal-pokemon').on('click', function() {
     $('.start-modal').addClass('not-active');
-    var selection = _.where(trainedArray, {'name': $(this).text()});
+    var selection = _.where(trainedArray, {
+      'name': $(this).text()
+    });
     currentPlayer = selection[0];
     setTrainer(currentPlayer);
     setEnemy(choosePokemon());
-    setTimeout(function() {currentEnemy.attack(currentPlayer);}, 2000);
+    setTimeout(function() {
+      currentEnemy.attack(currentPlayer);
+    }, 2000);
     document.querySelector('.background-music').src = 'audio/107-battle-vs-wild-pokemon-.mp3';
   });
 });
@@ -83,8 +93,20 @@ function Pokemon(name, hp, maximumRoll, minimumRoll, picture) {
 
 Trained.prototype.potion = function(target) {
   var trained = this;
-  var currentHp = target.currentHp + 20;
-}
+  $('.combat-text').text('You used a potion on ' + trained.name);
+
+  setTimeout(function() {
+    var currentHp = target.currentHp + 40;  //Changed it to 40 to make it a little more balanced, might change it back
+    trained.currentHp = currentHp;          //if I get to putting more pokemon in 
+    $('.js-trainer-current-hp').text(currentHp);
+    $('.js-trainer-bar').css('width', target.currentHp / target.maxHp * 100 + "%");
+    $('.combat-text').text(trained.name + ' gained 20 HP!');
+
+    setTimeout(function(){
+      currentEnemy.attack(currentPlayer);
+    }, 2000);
+  }, 2000);
+};
 
 Trained.prototype.attack = function(target) {
   var trainer = this; //Setting variables for attack method
@@ -124,7 +146,7 @@ $('.js-attack').on('click', function() {
   currentPlayer.attack(currentEnemy);
 });
 
-$('.js-potion').on('click', function(){
+$('.js-potion').on('click', function() {
   $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
   currentPlayer.potion(currentPlayer);
 });
