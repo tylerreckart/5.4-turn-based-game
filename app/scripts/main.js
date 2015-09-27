@@ -14,7 +14,7 @@ var mewtwo = new Pokemon('Mewtwo', 100, 80, 25, 'images/characters-front/mewtwo.
 
 var trainedArray = [trainedBlastoise, trainedPikachu, trainedCharizard, trainedVenusaur];
 
-var pokemonArray = [blastoise, pikachu, charizard, alakazam, poliwhirl];
+var pokemonArray = _.shuffle([blastoise, pikachu, charizard, alakazam, poliwhirl]);
 
 // random damage calculation based on maxRoll and minRoll values
 var attack = function(maximumRoll, minimumRoll) {
@@ -41,6 +41,7 @@ var setTrainer = function(trainer) {
       'left': '60px',
       'display': 'block'
     }, 1000);
+  $('.js-trainer-bar').css('width', trainer.currentHp / trainer.maxHp * 100 + "%");
 };
 
 var setEnemy = function(enemy) {
@@ -54,6 +55,7 @@ var setEnemy = function(enemy) {
       'right': '60px',
       'display': 'block'
     }, 1000);
+  $('.js-enemy-bar').css('width', enemy.currentHp / enemy.maxHp * 100 + "%");
   $('.combat-text').text('A wild ' + enemy.name + ' appears.');
 };
 
@@ -65,7 +67,7 @@ $(document).ready(function() {
     });
     currentPlayer = selection[0];
     setTrainer(currentPlayer);
-    setEnemy(choosePokemon());
+    setEnemy(pokemonArray[0]);
     setTimeout(function() {
       currentEnemy.attack(currentPlayer);
     }, 2000);
@@ -96,11 +98,11 @@ Trained.prototype.potion = function(target) {
   $('.combat-text').text('You used a potion on ' + trained.name);
 
   setTimeout(function() {
-    var currentHp = target.currentHp + 40; //Changed it to 40 to make it a little more balanced, might change it back
+    var currentHp = target.currentHp + 60; //Changed it to 40 to make it a little more balanced, might change it back
     trained.currentHp = currentHp; //if I get to putting more pokemon in
     $('.js-trainer-current-hp').text(currentHp);
     $('.js-trainer-bar').css('width', target.currentHp / target.maxHp * 100 + "%");
-    $('.combat-text').text(trained.name + ' gained 40 HP!');
+    $('.combat-text').text(trained.name + ' gained 60 HP!');
 
     setTimeout(function() {
       currentEnemy.attack(currentPlayer);
@@ -138,8 +140,15 @@ Trained.prototype.attack = function(target) {
         setTimeout(function() {
           $('.combat-text').text("The wild " + target.name + " has fainted.");
           setTimeout(function() {
-            location.reload();
-          }, 5000);
+            currentEnemy = _.find(pokemonArray, function(obj){
+              return obj.currentHp > 0;
+            });
+            setEnemy(currentEnemy);
+            $('.combat-text').text("A wild " + currentEnemy.name + " has appeared.");
+            setTimeout(function(){
+              $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
+            }, 2000);
+          }, 3000);
         }, 2000);
       } else {
 
@@ -165,8 +174,15 @@ Trained.prototype.attack = function(target) {
         setTimeout(function() {
           $('.combat-text').text("The wild " + target.name + " has fainted.");
           setTimeout(function() {
-            location.reload();
-          }, 5000);
+            currentEnemy = _.find(pokemonArray, function(obj){
+              return obj.currentHp > 0;
+            });
+            setEnemy(currentEnemy);
+            $('.combat-text').text("A wild " + currentEnemy.name + " has appeared.");
+            setTimeout(function(){
+              $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
+            }, 2000);
+          }, 3000);
         }, 2000);
       } else {
 
@@ -272,7 +288,7 @@ $('.js-switch-pokemon.pikachu').on('click', function() {
 });
 
 $('.js-back').on('click', function(){
-  $('.js-player-options, .js-switch-menu').toggleClass('not-active');  
+  $('.js-player-options, .js-switch-menu').toggleClass('not-active');
 });
 
 
