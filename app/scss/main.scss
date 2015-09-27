@@ -18,6 +18,7 @@ body {
   width: 550px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+  margin-top: 150px;
 }
 
 .trainer-hp-bar-label {
@@ -231,6 +232,8 @@ body {
 }
 
 .player-options {
+  position: absolute;
+  left: 10px;
 
   .question {
     margin-bottom: 20px;
@@ -239,6 +242,8 @@ body {
   .player-option {
     position: relative;
     margin-left: 15px;
+    margin-top: 10px;
+    cursor: default;
 
     .triangle {
       @include triangle(16px 8px, black, right);

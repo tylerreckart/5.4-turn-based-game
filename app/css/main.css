@@ -22,7 +22,8 @@ body {
   background-color: white;
   width: 550px;
   border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px; }
+  border-bottom-right-radius: 3px;
+  margin-top: 150px; }
   .container::after {
     clear: both;
     content: "";
@@ -223,24 +224,28 @@ body {
   border-width: 6px 0 0 20px;
   border-color: transparent transparent transparent #000000; }
 
-.player-options .question {
-  margin-bottom: 20px; }
-
-.player-options .player-option {
-  position: relative;
-  margin-left: 15px; }
-  .player-options .player-option .triangle {
-    height: 0;
-    width: 0;
-    border-bottom: 8px solid transparent;
-    border-left: 8px solid black;
-    border-top: 8px solid transparent;
-    position: absolute;
-    left: -15px;
-    top: -2px;
-    visibility: hidden; }
-  .player-options .player-option:hover .triangle {
-    visibility: visible; }
+.player-options {
+  position: absolute;
+  left: 10px; }
+  .player-options .question {
+    margin-bottom: 20px; }
+  .player-options .player-option {
+    position: relative;
+    margin-left: 15px;
+    margin-top: 10px;
+    cursor: default; }
+    .player-options .player-option .triangle {
+      height: 0;
+      width: 0;
+      border-bottom: 8px solid transparent;
+      border-left: 8px solid black;
+      border-top: 8px solid transparent;
+      position: absolute;
+      left: -15px;
+      top: -2px;
+      visibility: hidden; }
+    .player-options .player-option:hover .triangle {
+      visibility: visible; }
 
 .combat-text-container {
   width: 400px;
