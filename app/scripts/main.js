@@ -198,31 +198,67 @@ Pokemon.prototype.attack = function(target) {
   var currentHp = target.currentHp;
   var damage = attack(this.maximumRoll, this.minimumRoll);
   $('.combat-text').text("The wild " + pokemon.name + " attacks " + target.name);
+  var attackRoll = roll100();
 
-  setTimeout(function() { //2sec delay until attack happens
-    currentHp = currentHp - damage;
-    if (currentHp < 0) {
-      currentHp = 0;
-    }
-    target.currentHp = currentHp;
-    $('.js-trainer-current-hp').text(currentHp);
-    $('.js-trainer-bar').css('width', target.currentHp / target.maxHp * 100 + "%");
-    $('.combat-text').text("The wild " + pokemon.name + " did " + damage + " damage to " + target.name);
-
-    if (target.currentHp <= 0) {
-      setTimeout(function() { //2sec delay for result
-        $('.combat-text').text(target.name + ' has fainted');
-        // timeout page reload so that the player knows they have lost
-        setTimeout(function() {
-          location.reload();
-        }, 5000);
-      }, 2000);
-    } else {
-      setTimeout(function() { //2sec delay until menu reset
+  if (attackRoll < 11) {
+    setTimeout(function() {
+      $('.combat-text').text("The wild " + pokemon.name + " missed!");
+      setTimeout(function() {
         $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
       }, 2000);
-    }
-  }, 2000);
+    }, 2000);
+  } else if (attackRoll > 98) {
+    setTimeout(function() {
+      damage = damage * 2;
+      currentHp = currentHp - damage;
+      if (currentHp < 0) {
+        currentHp = 0;
+      }
+      target.currentHp = currentHp;
+      $('.js-trainer-current-hp').text(currentHp);
+      $('.js-trainer-bar').css('width', target.currentHp / target.maxHp * 100 + "%");
+      $('.combat-text').text("The wild " + pokemon.name + " did " + damage + " damage to " + target.name + ". A critical hit!");
+
+      if (target.currentHp <= 0) { //Added this in the attack method, else fainted statement happens after counter.
+        setTimeout(function() {
+          $('.combat-text').text(target.name + " has fainted.");
+          setTimeout(function() {
+            location.reload();
+          }, 5000);
+        }, 2000);
+      } else {
+        setTimeout(function() {
+          $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
+        }, 2000);
+      }
+    }, 2000);
+  } else {
+
+    setTimeout(function() { //2sec delay until attack happens
+      currentHp = currentHp - damage;
+      if (currentHp < 0) {
+        currentHp = 0;
+      }
+      target.currentHp = currentHp;
+      $('.js-trainer-current-hp').text(currentHp);
+      $('.js-trainer-bar').css('width', target.currentHp / target.maxHp * 100 + "%");
+      $('.combat-text').text("The wild " + pokemon.name + " did " + damage + " damage to " + target.name);
+
+      if (target.currentHp <= 0) {
+        setTimeout(function() { //2sec delay for result
+          $('.combat-text').text(target.name + ' has fainted');
+          // timeout page reload so that the player knows they have lost
+          setTimeout(function() {
+            location.reload();
+          }, 5000);
+        }, 2000);
+      } else {
+        setTimeout(function() { //2sec delay until menu reset
+          $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
+        }, 2000);
+      }
+    }, 2000);
+  }
 };
 
 var roll100 = function() {
