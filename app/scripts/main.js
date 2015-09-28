@@ -5,12 +5,12 @@ var trainedPikachu = new Trained('Pikachu', 100, 40, 30, 'images/characters-back
 var trainedVenusaur = new Trained('Venusaur', 120, 40, 10, 'images/characters-back/venusaur.png');
 
 // enemy
-var blastoise = new Pokemon('Blastoise', 100, 50, 10, 'images/characters-front/blastoise.png');
-var pikachu = new Pokemon('Pikachu', 100, 40, 30, 'images/characters-front/pikachu.png');
-var charizard = new Pokemon('Charizard', 100, 50, 20, 'images/characters-front/charizard.png');
-var alakazam = new Pokemon('Alakazam', 100, 65, 10, 'images/characters-front/alakazam.png');
-var poliwhirl = new Pokemon('Poliwhirl', 100, 40, 35, 'images/characters-front/poliwhirl.png');
-var two = new Pokemon('two', 100, 80, 25, 'images/characters-front/two.png');
+var blastoise = new Pokemon('Blastoise', 1, 50, 10, 'images/characters-front/blastoise.png');
+var pikachu = new Pokemon('Pikachu', 1, 40, 30, 'images/characters-front/pikachu.png');
+var charizard = new Pokemon('Charizard', 1, 50, 20, 'images/characters-front/charizard.png');
+var alakazam = new Pokemon('Alakazam', 1, 65, 10, 'images/characters-front/alakazam.png');
+var poliwhirl = new Pokemon('Poliwhirl', 1, 40, 35, 'images/characters-front/poliwhirl.png');
+var mewtwo = new Pokemon('Mewtwo', 100, 80, 25, 'images/characters-front/mewtwo.png');
 
 var trainedArray = [trainedBlastoise, trainedPikachu, trainedCharizard, trainedVenusaur];
 
