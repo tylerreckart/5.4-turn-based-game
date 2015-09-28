@@ -99,6 +99,9 @@ Trained.prototype.potion = function(target) {
 
   setTimeout(function() {
     var currentHp = target.currentHp + 60; //Changed it to 40 to make it a little more balanced, might change it back
+    if (currentHp > target.maxHp) {
+      currentHp = target.maxHp;
+    }
     trained.currentHp = currentHp; //if I get to putting more pokemon in
     $('.js-trainer-current-hp').text(currentHp);
     $('.js-trainer-bar').css('width', target.currentHp / target.maxHp * 100 + "%");
@@ -140,12 +143,12 @@ Trained.prototype.attack = function(target) {
         setTimeout(function() {
           $('.combat-text').text("The wild " + target.name + " has fainted.");
           setTimeout(function() {
-            currentEnemy = _.find(pokemonArray, function(obj){
+            currentEnemy = _.find(pokemonArray, function(obj) {
               return obj.currentHp > 0;
             });
             setEnemy(currentEnemy);
             $('.combat-text').text("A wild " + currentEnemy.name + " has appeared.");
-            setTimeout(function(){
+            setTimeout(function() {
               $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
             }, 2000);
           }, 3000);
@@ -174,12 +177,12 @@ Trained.prototype.attack = function(target) {
         setTimeout(function() {
           $('.combat-text').text("The wild " + target.name + " has fainted.");
           setTimeout(function() {
-            currentEnemy = _.find(pokemonArray, function(obj){
+            currentEnemy = _.find(pokemonArray, function(obj) {
               return obj.currentHp > 0;
             });
             setEnemy(currentEnemy);
             $('.combat-text').text("A wild " + currentEnemy.name + " has appeared.");
-            setTimeout(function(){
+            setTimeout(function() {
               $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
             }, 2000);
           }, 3000);
@@ -207,87 +210,119 @@ $('.js-potion').on('click', function() {
 
 $('.js-switch').on('click', function() {
   $('.js-player-options, .js-switch-menu').toggleClass('not-active');
-  _.each(trainedArray, function(el, ind){
-    var currentHp = '.' + el.name.toLowerCase() + '-current-hp';
-    var maxHp = '.' + el.name.toLowerCase() + '-max-hp';
-    $(currentHp).text(el.currentHp);
-    $(maxHp).text(el.maxHp);
-  });
+  populateSwitchMenu();
 });
 
 $('.js-switch-pokemon.charizard').on('click', function() {
   $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
-  $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
-
-  setTimeout(function(){
-    $('.combat-text').text('Go... Charizard!');
-    var selection = _.where(trainedArray, {
+  if (_.where(trainedArray, {
       'name': 'Charizard'
-    });
-    currentPlayer = selection[0];
-    setTrainer(currentPlayer);
+    })[0].currentHp === 0) {
+    $('.combat-text').text("You cannot use this pokemon");
+    setTimeout(function() {
+      $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
+    }, 2000);
+  } else {
+
+    $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
 
     setTimeout(function() {
-      currentEnemy.attack(currentPlayer);
+      $('.combat-text').text('Go... Charizard!');
+      var selection = _.where(trainedArray, {
+        'name': 'Charizard'
+      });
+      currentPlayer = selection[0];
+      setTrainer(currentPlayer);
+
+      setTimeout(function() {
+        currentEnemy.attack(currentPlayer);
+      }, 2000);
     }, 2000);
-  }, 2000);
+  }
 });
 
 $('.js-switch-pokemon.blastoise').on('click', function() {
   $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
-  $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
-
-  setTimeout(function(){
-    $('.combat-text').text('Go... Blastoise!');
-    var selection = _.where(trainedArray, {
+  if (_.where(trainedArray, {
       'name': 'Blastoise'
-    });
-    currentPlayer = selection[0];
-    setTrainer(currentPlayer);
+    })[0].currentHp === 0) {
+    $('.combat-text').text("You cannot use this pokemon");
+    setTimeout(function() {
+      $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
+    }, 2000);
+  } else {
+      $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
 
     setTimeout(function() {
-      currentEnemy.attack(currentPlayer);
+      $('.combat-text').text('Go... Blastoise!');
+      var selection = _.where(trainedArray, {
+        'name': 'Blastoise'
+      });
+      currentPlayer = selection[0];
+      setTrainer(currentPlayer);
+
+      setTimeout(function() {
+        currentEnemy.attack(currentPlayer);
+      }, 2000);
     }, 2000);
-  }, 2000);
+  }
 });
 
 $('.js-switch-pokemon.venusaur').on('click', function() {
   $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
-  $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
-
-  setTimeout(function(){
-    $('.combat-text').text('Go... Venusaur!');
-    var selection = _.where(trainedArray, {
+  if (_.where(trainedArray, {
       'name': 'Venusaur'
-    });
-    currentPlayer = selection[0];
-    setTrainer(currentPlayer);
+    })[0].currentHp === 0) {
+    $('.combat-text').text("You cannot use this pokemon");
+    setTimeout(function() {
+      $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
+    }, 2000);
+  } else {
+      $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
 
     setTimeout(function() {
-      currentEnemy.attack(currentPlayer);
+      $('.combat-text').text('Go... Venusaur!');
+      var selection = _.where(trainedArray, {
+        'name': 'Venusaur'
+      });
+      currentPlayer = selection[0];
+      setTrainer(currentPlayer);
+
+      setTimeout(function() {
+        currentEnemy.attack(currentPlayer);
+      }, 2000);
     }, 2000);
-  }, 2000);
+  }
 });
 
 $('.js-switch-pokemon.pikachu').on('click', function() {
   $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
-  $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
-
-  setTimeout(function(){
-    $('.combat-text').text('Go... Pikachu!');
-    var selection = _.where(trainedArray, {
+  if (_.where(trainedArray, {
       'name': 'Pikachu'
-    });
-    currentPlayer = selection[0];
-    setTrainer(currentPlayer);
+    })[0].currentHp === 0) {
+    $('.combat-text').text("You cannot use this pokemon");
+    setTimeout(function() {
+      $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
+    }, 2000);
+  } else {
+      $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
 
     setTimeout(function() {
-      currentEnemy.attack(currentPlayer);
+      $('.combat-text').text('Go... Pikachu!');
+      var selection = _.where(trainedArray, {
+        'name': 'Pikachu'
+      });
+      currentPlayer = selection[0];
+      setTrainer(currentPlayer);
+
+      setTimeout(function() {
+        currentEnemy.attack(currentPlayer);
+      }, 2000);
     }, 2000);
-  }, 2000);
+  }
 });
 
-$('.js-back').on('click', function(){
+$('.js-back').on('click', function() {
   $('.js-player-options, .js-switch-menu').toggleClass('not-active');
 });
 
@@ -323,8 +358,18 @@ Pokemon.prototype.attack = function(target) {
         setTimeout(function() {
           $('.combat-text').text(target.name + " has fainted.");
           setTimeout(function() {
-            location.reload();
-          }, 5000);
+            if (_.every(trainedArray, function(obj) {
+                return obj.currentHp === 0;
+              })) {
+              $('.combat-text').text('Game Over');
+              setTimeout(function() {
+                location.reload();
+              }, 5000);
+            } else {
+              $('.js-switch-menu, .js-combat-text-container').toggleClass('not-active');
+              populateSwitchMenu();
+            }
+          }, 2000);
         }, 2000);
       } else {
         setTimeout(function() {
@@ -349,8 +394,18 @@ Pokemon.prototype.attack = function(target) {
           $('.combat-text').text(target.name + ' has fainted');
           // timeout page reload so that the player knows they have lost
           setTimeout(function() {
-            location.reload();
-          }, 5000);
+            if (_.every(trainedArray, function(obj) {
+                return obj.currentHp === 0;
+              })) {
+              $('.combat-text').text('Game Over');
+              setTimeout(function() {
+                location.reload();
+              }, 5000);
+            } else {
+              $('.js-switch-menu, .js-combat-text-container').toggleClass('not-active');
+              populateSwitchMenu();
+            }
+          }, 2000);
         }, 2000);
       } else {
         setTimeout(function() { //2sec delay until menu reset
@@ -364,4 +419,13 @@ Pokemon.prototype.attack = function(target) {
 var roll100 = function() {
   var result = Math.ceil(Math.random() * 100);
   return result;
+};
+
+var populateSwitchMenu = function() {
+  _.each(trainedArray, function(el, ind) {
+    var currentHp = '.' + el.name.toLowerCase() + '-current-hp';
+    var maxHp = '.' + el.name.toLowerCase() + '-max-hp';
+    $(currentHp).text(el.currentHp);
+    $(maxHp).text(el.maxHp);
+  });
 };
