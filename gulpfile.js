@@ -76,6 +76,11 @@ gulp.task('clean:dist', function(callback) {
   del(['dist/**/*', '!dist/images', '!dist/images/**/*'], callback);
 });
 
+gulp.task('clean', function(callback) {
+  del('dist');
+  return cache.clearAll(callback);
+});
+
 gulp.task('build', function(callback) {
   runSequence(
     ['sass', 'useref', 'images', 'fonts', 'audio'],
