@@ -2,7 +2,7 @@
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 @include font-face("pokemon-gb", '../fonts/pokemon-gb/pokemon-gb');
 
-$modal-background: black;
+$modal-background: #f0f0f0;
 $blastoise: blue;
 $charizard: red;
 $venusaur: green;
@@ -69,9 +69,9 @@ body {
   right: 0;
   margin-right: 10px;
   margin-bottom: 10px;
-  border-right: 2px solid black;
-  border-bottom: 2px solid black;
-  border-bottom-right-radius: 2px;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  border-bottom-right-radius: 3px;
   height: 80px;
 
 
@@ -122,9 +122,9 @@ body {
   position: absolute;
   top: 0;
   margin-top: 10px;
-  border-left: 2px solid black;
-  border-bottom: 2px solid black;
-  border-bottom-left-radius: 2px;
+  border-left: 3px solid black;
+  border-bottom: 3px solid black;
+  border-bottom-left-radius: 3px;
   padding: 10px;
   height: 80px;
 
@@ -215,12 +215,12 @@ body {
 
 .trainer-triangle {
   position: absolute;
-  top: 67px;
+  top: 66px;
   left: 0;
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 5px 0 6px 10px;
+  border-width: 5px 0 6px 20px;
   border-color: transparent transparent #000000 transparent;
 
 }
@@ -229,11 +229,11 @@ body {
   position: absolute;
   right: -5px;
 
-  top:72px;
+  top:71px;
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 6px 5px 0 10px;
+  border-width: 6px 5px 0 20px;
   border-color: transparent transparent transparent #000000;
 
 }
@@ -344,16 +344,17 @@ body {
   bottom: 0;
   left: 0;
   background: $modal-background;
+  z-index: 1;
 }
 
 .modal-menu {
-  @include size(400px 400px);
+  width: 550px;
   position: absolute;
-  top: 50%;
+  top: 100px;
+  height: 500px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
   background: white;
-  border: 3px solid black;
   border-radius: 10px;
   padding: 20px;
 
@@ -369,38 +370,77 @@ body {
   h3 {
     font-size: em(20px);
     line-height: 30px;
+  }
 
-    span {
-      background: chartreuse;
-    }
+  .modal-text {
+    margin-top: 150px;
+    font-family: "pokemon-gb";
+    text-align: left;
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+  }
+
+  .modal-text2 {
+    font-family: "pokemon-gb";
+    text-align: left;
+    font-size: 15px;
+    margin-left: 30px;
   }
 
   .modal-pokemons {
-    width: 200px;
     margin: 20px auto 0;
     font-size: em(25px);
     line-height: 40px;
+    text-align: left;
+    font-family: "pokemon-gb";
+    font-size: 15px;
+    margin-left: 30px;
 
     .modal-pokemon {
       margin: 10px;
-      border: 2px solid black;
-      border-radius: 5px;
+      max-width: 150px;
+      padding-left: 10px;
 
       &.blastoise:hover {
         background: $blastoise;
+        border-bottom: 2px solid black;
       }
 
       &.charizard:hover {
         background: $charizard;
+        border-bottom: 2px solid black;
       }
 
       &.venusaur:hover {
         background: $venusaur;
+        border-bottom: 2px solid black;
       }
 
       &.pikachu:hover {
         background: $pikachu;
+        border-bottom: 2px solid black;
       }
     }
   }
+}
+
+.modal-title {
+  max-width: 256px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mewtwo-img {
+  position: absolute;
+  right: 75px;
+  top: 300px;
+}
+
+.trainer-img {
+  max-height: 50px;
+  position: absolute;
+  right: 205px;
+  top: 385px;
 }
