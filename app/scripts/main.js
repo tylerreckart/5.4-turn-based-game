@@ -142,16 +142,38 @@ Trained.prototype.attack = function(target) {
       if (target.currentHp <= 0) { //Added this in the attack method, else fainted statement happens after counter.
         setTimeout(function() {
           $('.combat-text').text("The wild " + target.name + " has fainted.");
-          setTimeout(function() {
-            currentEnemy = _.find(pokemonArray, function(obj) {
+          if (_.any(pokemonArray, function(obj) {
               return obj.currentHp > 0;
-            });
-            setEnemy(currentEnemy);
-            $('.combat-text').text("A wild " + currentEnemy.name + " has appeared.");
+            })) {
             setTimeout(function() {
-              $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
+              currentEnemy = _.find(pokemonArray, function(obj) {
+                return obj.currentHp > 0;
+              });
+              setEnemy(currentEnemy);
+              $('.combat-text').text("A wild " + currentEnemy.name + " has appeared.");
+              setTimeout(function() {
+                $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
+              }, 2000);
+            }, 3000);
+          } else if (!_.any(pokemonArray, function(obj) {
+              return obj.currentHp > 0;
+            }) && mewtwo.currentHp === 0) {
+            setTimeout(function() {
+              $('.combat-text').text("Congratulations! You have won the game!");
             }, 2000);
-          }, 3000);
+          } else {
+            setTimeout(function() {
+              $('.combat-text').text("A mysterious figure appears...");
+              setTimeout(function() {
+                currentEnemy = mewtwo;
+                setEnemy(mewtwo);
+                $('.combat-text').text("Mewtwo steps out of the shadows.");
+                setTimeout(function() {
+                  $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
+                }, 2000);
+              }, 2000);
+            }, 2000);
+          }
         }, 2000);
       } else {
 
@@ -176,16 +198,38 @@ Trained.prototype.attack = function(target) {
       if (target.currentHp <= 0) { //Added this in the attack method, else fainted statement happens after counter.
         setTimeout(function() {
           $('.combat-text').text("The wild " + target.name + " has fainted.");
-          setTimeout(function() {
-            currentEnemy = _.find(pokemonArray, function(obj) {
+          if (_.any(pokemonArray, function(obj) {
               return obj.currentHp > 0;
-            });
-            setEnemy(currentEnemy);
-            $('.combat-text').text("A wild " + currentEnemy.name + " has appeared.");
+            })) {
             setTimeout(function() {
-              $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
+              currentEnemy = _.find(pokemonArray, function(obj) {
+                return obj.currentHp > 0;
+              });
+              setEnemy(currentEnemy);
+              $('.combat-text').text("A wild " + currentEnemy.name + " has appeared.");
+              setTimeout(function() {
+                $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
+              }, 2000);
+            }, 3000);
+          } else if (!_.any(pokemonArray, function(obj) {
+              return obj.currentHp > 0;
+            }) && mewtwo.currentHp === 0) {
+            setTimeout(function() {
+              $('.combat-text').text("Congratulations! You have won the game!");
             }, 2000);
-          }, 3000);
+          } else {
+            setTimeout(function() {
+              $('.combat-text').text("A mysterious figure appears...");
+              setTimeout(function() {
+                currentEnemy = mewtwo;
+                setEnemy(mewtwo);
+                $('.combat-text').text("Mewtwo steps out of the shadows.");
+                setTimeout(function() {
+                  $('.js-player-options, .js-combat-text-container').toggleClass('not-active');
+                }, 2000);
+              }, 2000);
+            }, 2000);
+          }
         }, 2000);
       } else {
 
@@ -251,7 +295,7 @@ $('.js-switch-pokemon.blastoise').on('click', function() {
       $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
     }, 2000);
   } else {
-      $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
+    $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
 
     setTimeout(function() {
       $('.combat-text').text('Go... Blastoise!');
@@ -278,7 +322,7 @@ $('.js-switch-pokemon.venusaur').on('click', function() {
       $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
     }, 2000);
   } else {
-      $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
+    $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
 
     setTimeout(function() {
       $('.combat-text').text('Go... Venusaur!');
@@ -305,7 +349,7 @@ $('.js-switch-pokemon.pikachu').on('click', function() {
       $('.js-combat-text-container, .js-switch-menu').toggleClass('not-active');
     }, 2000);
   } else {
-      $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
+    $('.combat-text').text('Good job ' + currentPlayer.name + '! Come back.');
 
     setTimeout(function() {
       $('.combat-text').text('Go... Pikachu!');
